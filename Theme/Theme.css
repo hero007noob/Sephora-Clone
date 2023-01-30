@@ -1,0 +1,79 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-red: #cf112c;
+  --color-brightRed: #e2030f;
+  --color-green: #008048;
+  --color-yellow: #ffc003;
+  --color-blue: #136bea;
+  --color-lightBlue: #e5f2fd;
+  --color-gray: #666;
+  --color-midGray: #ccc;
+  --color-lightGray: #eee;
+  --color-nearWhite: #f6f6f8;
+  --color-darken1: rgba(0, 0, 0, 0.0625);
+  --color-darken2: rgba(0, 0, 0, 0.125);
+  --color-darken3: rgba(0, 0, 0, 0.25);
+  --color-error: #cf112c;
+  --color-base: #000;
+  --color-link: #136bea;
+  --font-family-base: "helvetica neue", helvetica, arial, sans-serif;
+  --font-family-serif: georgia, times, serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-base: 1.5;
+  --leading-relaxed: 1.75;
+  --rounded-0: 0px;
+  --rounded-1: 2px;
+  --rounded-2: 4px;
+  --rounded-3: 6px;
+  --rounded-4: 8px;
+  --rounded-none: 0px;
+  --rounded-full: 9999px;
+  --rounded-top: 4px 4px 0 0;
+  --rounded-right: 0 4px 4px 0;
+  --rounded-bottom: 0 0 4px 4px;
+  --rounded-left: 4px 0 0 4px;
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-container: 16px;
+  --space--container: -16px;
+  --shadow-light: 0 0 6px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 0 12px rgba(0, 0, 0, 0.2);
+  --layer-fixedBar: 1000;
+  --layer-header: 1010;
+  --layer-flyout: 1020;
+  --layer-modal: 1030;
+  --layer-max: 2147483647;
+}
+/* 
+example how to use these variables in your css file:
+@import "/Theme/Theme.css";
+
+#continer {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-base);
+  font-size: var(--font-size-xl);
+}
+
+*/
