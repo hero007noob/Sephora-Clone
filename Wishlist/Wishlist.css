@@ -1,0 +1,70 @@
+#wishlistmain{
+    border: 2px solid crimson;
+}
+.item{
+    border: 2px solid green;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.imagediv{
+    border: 2px solid red;
+
+}
+.details{
+    border: 2px solid blue;
+}
+.details1{
+    border: 2px solid rgb(238, 28, 0);
+    font-weight: bolder;
+    font-size: 14px;
+    line-height: 18px;
+}
+.pricediv{
+    border: 2px solid rgb(235, 18, 162);
+}
+.basketbuttondiv{
+    border: 2px solid orangered;
+    
+}
+ .basketbuttondiv >button{
+    height: 44px;
+    min-height: 44px;
+
+} 
+.icondiv{
+    border: 2px solid slateblue;
+
+}
+
+ #wishlistmain{
+    border: 2px solid crimson;
+    width: 80%;
+    margin: auto;
+}
+.item{
+    border: 2px solid green;
+    display: flex;
+    gap: 50px;
+    border-bottom: 1.5px solid rgb(197, 193, 193);
+}
+.item > button{
+    height: 30px;
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+}
+.item > .imagediv{
+    border: 2px solid red;
+    width: 150px;
+    
+}
+.imagediv > img{
+    width: 100%;
+}
+.item>.details{
+    border: 2px solid blue;
+   
+} 
