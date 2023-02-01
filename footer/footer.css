@@ -139,3 +139,93 @@ hr{
 a:hover{
     text-decoration: underline;
 }
+.footer-downloadapphr{
+    display: none;
+}
+#footer-downloadapp{
+    display: none;
+}
+#region-lowerhr{
+    display: none;
+}
+.middlemainfoot-queryh{
+    display: none;
+}
+
+
+@media screen and (max-width: 980px)  {
+    #uppermainfoot{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .uppermainfoot-div{
+        /* margin: 6px; */
+        padding: 2px;
+    }
+    #middlemainfoot{
+        display: flex;
+        flex-direction: column;
+    }
+    #footersearch{
+        margin-top: 12px;
+        padding: 0px;
+    }
+    .middlemainfoot-div h5{
+        padding: 0px;
+    }
+    #lowermainfoot{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    #lowermainfoot-left{
+        margin: 12px;
+        margin-top: 24px;
+        margin-bottom: 48px;
+    }
+    #lowermainfoot-right{
+        margin: 12px;
+        /* display: none; */
+        margin-top: -24px;
+        margin-left: 12px;
+    }
+    #footer-lowerhr{
+        display: none;
+    }
+    .footer-downloadapphr{
+        display: block;
+    }
+    #region-lowerhr{
+        display: block;
+    }
+    #footer-downloadapp{
+        display: block;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        margin-left: 12px;
+    }
+    #footer-downloadapp img{
+        width: 120px;
+    }
+    #aboutsephora{
+        display: none;
+    }
+    #mysephora{
+        display: none;
+    }
+    #help{
+        display: none;
+    }
+    .middlemainfoot-queryh{
+        display: block;
+    }
+    .middlemainfoot-queryh > h5{
+        margin-left: 12px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+
+
+  }

@@ -48,6 +48,10 @@ function footer(){
 
     
     <div id="middlemainfoot">
+        <div class="middlemainfoot-queryh" id="aboutsephoraselector">
+            <h5>About Sephora</h5>
+            <hr>
+        </div>
         <div id="aboutsephora" class="middlemainfoot-div">
             <h5>About Sephora</h5>
             <a href="">About Sephora</a>
@@ -64,6 +68,10 @@ function footer(){
             <a href="">Sephora Accelerate</a>
             <a href="">Report a Vulnerability</a>
         </div>
+        <div class="middlemainfoot-queryh" id="mysephoraselector">
+            <h5>My Sephora</h5>
+            <hr>
+        </div>
         <div id="mysephora" class="middlemainfoot-div">
             <h5>My Sephora</h5>
             <a href="">Beauty Insider</a>
@@ -78,6 +86,10 @@ function footer(){
             <a href="">Rewards Bazaar</a>
             <a href="">Loves</a>
             <a href="">Book a Reservation</a>
+        </div>
+        <div class="middlemainfoot-queryh" id="helpselector">
+            <h5>Help</h5>
+            <hr>
         </div>
         <div id="help" class="middlemainfoot-div">
             <h5>Help</h5>
@@ -109,6 +121,7 @@ function footer(){
                 <a href="">Canada - Francais</a>
             </div>
         </div>
+        <hr id="region-lowerhr">
         <div id="webelong" class="middlemainfoot-div">
             <h2>We Belong to</h2>
             <h2>Something Beautiful</h2>
@@ -119,7 +132,7 @@ function footer(){
             </div>
         </div>
     </div>
-    <hr>
+    <hr id="footer-lowerhr">
 
 
     <div id="lowermainfoot">
@@ -135,6 +148,13 @@ function footer(){
             
             <p id="lower-lowerp">1-877-737-4672    TTY: 1-888-866-9845</p>
         </div>
+        <hr class="footer-downloadapphr">
+        <div id="footer-downloadapp">
+            <h5>Download the Sephora App</h5>
+            <img src="https://www.sephora.com/img/ufe/badge-app-store.svg" alt="">
+            <img src="https://www.sephora.com/img/ufe/badge-google-play.svg" alt="">
+        </div>
+        <hr class="footer-downloadapphr">
         <div id="lowermainfoot-right">
             <img src="https://www.sephora.com/img/ufe/icons/instagram-ko.svg" alt="">
             <img src="https://www.sephora.com/img/ufe/icons/facebook-ko.svg" alt="">
