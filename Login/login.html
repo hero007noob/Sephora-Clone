@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/SignUp/login-signup.css" />
+  </head>
+  <body>
+    <div id="log-in-div">
+      <div id="log-in-popup">
+        <div id="log-in-popup-header">
+          <p>Create an Account</p>
+          <div id="log-in-close-btn">
+            <img src="./Assets/cross.svg" alt="" />
+          </div>
+        </div>
+        <div id="log-in-popup-body">
+          <p>
+            Sign in or create an account to enjoy
+            <span class="text-bold">FREE standard shipping</span> on all
+            orders.</p
+          >
+          <div class="form-input-style" id="log-in-email">
+            <div>
+              <input id="email" type="email" placeholder="Email Address*" />
+              <img src="./Assets/warn.svg" alt="" />
+            </div>
+            <p class="error-tooltip">Please enter your email address. </p>
+          </div>
+          <div class="form-input-style" id="log-in-password">
+            <div>
+              <input id="password" type="password" placeholder="Password*" />
+              <img src="./Assets/warn.svg" alt="" />
+            </div>
+            <p class="error-tooltip"
+              >Please enter a password between 6-12 characters</p
+            >
+          </div>
+
+          <div id="log-in-keep-signed">
+            <div class="checkBox">
+              <img src="./Assets/check.png" alt="" />
+            </div>
+            <p>Keep me signed in</p>
+          </div>
+          <div id="log-in-joinnow" class="black-round-btn login-btn-height">
+            <p>Sign In</p>
+          </div>
+          <div id="log-in-terms">
+            <p class="text-small">
+              By clicking “Sign In”, you (1) agree to the current version of our
+              <a href="https://policies.google.com/terms?hl=en">TERMS OF USE</a>
+              and (2) have read Sephora’s
+              <a href="https://policies.google.com/privacy?hl=en"
+                >Privacy Policy</a
+              >
+            </p>
+          </div>
+        </div>
+        <div id="log-in-footer">
+          <p>New to Sephora?</p>
+          <div
+            id="log-in-create-new"
+            class="black-round-btn outline-btn login-btn-height">
+            <p>Create Account</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="a123"></div>
+  </body>
+  <script type="module" src="./login.js"></script>
+  <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+</html>

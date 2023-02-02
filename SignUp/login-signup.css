@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+* {
+  font-family: "Inter", "Roboto", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+#sign-up-div,
+#log-in-div {
+  z-index: 10;
+  background-color: rgb(194, 194, 194);
+  margin: 0;
+  padding: 0;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+}
+#sign-up-popup,
+#log-in-popup {
+  background-color: white;
+  width: 462px;
+  margin: auto;
+  padding: 5px;
+  transform: translate(0px, 50px);
+  border-radius: 10px;
+}
+.form-input-style > div {
+  display: flex;
+}
+.form-input-style > div > img {
+  display: none;
+}
+#sign-up-popup-body,
+#log-in-popup-body {
+  /* background-color: green; */
+  width: 90%;
+  margin: auto;
+  padding: 5px;
+}
+#sign-up-popup-header,
+#log-in-popup-header {
+  display: flex;
+  text-align: center;
+  border-bottom: 1px solid #efefef;
+}
+#sign-up-popup-header > p,
+#log-in-popup-header > p {
+  margin: 10px auto;
+  /* font-size: 20px; */
+  font-weight: bold;
+}
+#sign-up-popup-body > img,
+#log-in-popup-body > img {
+  margin: 0;
+  margin-top: 15px;
+  width: 200px;
+}
+#sign-up-popup-body > p,
+#log-in-popup-body > p {
+  margin: 1px auto;
+  font-size: 14px;
+}
+.form-input-style {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 5px;
+  height: 44px;
+  margin: 15px auto;
+}
+
+.error-tooltip {
+  font-size: small;
+  color: #ce102c;
+  display: none;
+}
+#sign-up-birth-div {
+  border-bottom: 1px solid #efefef;
+}
+#sign-up-name-div {
+  margin-bottom: -10px;
+}
+#sign-up-name-div,
+#sign-up-birth-div {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+}
+#sign-up-birth-title-div {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  align-items: center;
+  height: 22px;
+  font-size: 14px;
+}
+#sign-up-birth-title-div > img {
+  width: 20px;
+  margin-bottom: 2px;
+}
+#sign-up-birth-div > div {
+  position: relative;
+}
+#sign-up-birth-div .error-tooltip {
+  margin-top: 32px;
+}
+#sign-up-birth-div div > p:first-child {
+  position: absolute;
+  margin-top: 0px;
+  margin-left: 2px;
+  font-size: 15px;
+  color: #666;
+}
+#sign-up-birth-div select {
+  position: absolute;
+  padding: 10px;
+  padding-bottom: 13px;
+  margin-top: -5px;
+  appearance: none;
+  left: 0;
+}
+.text-bold {
+  font-weight: bold;
+}
+.text-small {
+  font-size: 12px;
+  color: #666;
+}
+#sign-up-close-btn,
+#log-in-close-btn {
+  width: 12px;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+#sign-up-close-btn > img,
+#log-in-close-btn > img {
+  width: 100%;
+}
+#sign-up-keep-signed,
+#log-in-keep-signed {
+  display: flex;
+  align-items: center;
+  height: 23px;
+  font-size: 14px;
+}
+#log-in-keep-signed {
+  margin-bottom: 25px;
+}
+#sign-up-footer {
+  padding: 0 5%;
+}
+#sign-up-footer,
+#sign-up-terms,
+#log-in-terms,
+#log-in-footer {
+  margin: 15px 0;
+  border-top: 1px solid #efefef;
+}
+#log-in-footer {
+  padding: 0 5%;
+}
+#log-in-terms {
+  margin: 0;
+  padding: 0;
+}
+#log-in-terms > p {
+  font-size: 11px;
+}
+input,
+select {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+}
+.black-round-btn {
+  background-color: #222;
+  color: #fff;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+.outline-btn {
+  background-color: #fff;
+  color: #222;
+  padding: 0;
+  display: flex;
+  border: 2px solid #222;
+}
+.login-btn-height {
+  height: 45px;
+  margin: 0;
+}
+.checkBox {
+  border: 2px solid rgb(102, 102, 102);
+  height: 18px;
+  width: 18px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.checked {
+  font-weight: var(--font-weight-bold);
+}
+.checked {
+  padding: 1px;
+  border: none;
+  background-color: black;
+}
+.checkBox {
+  width: 18px;
+  height: 18px;
+}
+.checkBox > img {
+  width: 100%;
+}
+input:-webkit-autofill,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media screen and (max-width: 800px) {
+  #sign-up-popup,
+  #log-in-popup {
+    top: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+  }
+  #sign-up-popup-body,
+  #log-in-popup-body {
+    width: 100%;
+  }
+}
