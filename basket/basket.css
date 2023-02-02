@@ -1,0 +1,367 @@
+*{
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+#topmost-h{
+    margin: 24px 0px;
+}
+.container{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    border: 1px solid black;
+}
+#creditCardProgram{
+    border: 0.5px solid grey;
+    border-radius: 3px;
+    padding: 9px;
+    /* width: 600px; */
+}
+#creditCardProgram-div{
+    /* border: 1px solid black; */
+    display: flex;
+    padding: 6px 0px;
+
+}
+#creditCardProgram-div > p{
+    margin: 6px;
+    font-size: 14px;
+    width: 400px;
+}
+#creditCardProgram-div > img{
+    width: 50px;
+}
+#creditCardProgram-btn{
+    /* padding: -50px 100px; */
+    padding:3px 12px;
+    margin: 6px;
+    border-radius: 24px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+}
+.condition{
+    font-size: 12px;
+}
+
+
+#getItShipped{
+    border: 0.5 px solid grey;
+    background-color: #f6f6f8;
+    padding: 6px;
+    margin: 12px 0px;
+    
+}
+#getItShipped-innerdiv{
+    /* border: 0.5px solid gray; */
+    background-color: white;
+    margin: 6px;
+    padding: 12px;
+}
+#getItShipped-upperIcon{
+    display: flex;
+}
+#getItShipped-upperIcon > p{
+    font-size: 14px;
+}
+#getItShipped-upperIcon-img{
+    width: 25px;
+    height: 25px;
+    margin: 6px;
+}
+#getItShipped-twobox{
+    margin: 12px;
+    display: flex;
+}
+#getItShipped-twobox-left{
+    border: 1px solid grey;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    margin: 6px;
+}
+#getItShipped-twobox-right{
+    border: 1px solid grey;
+    padding: 12px;
+    margin: 6px;
+    display: flex;
+}
+#getItShipped-twobox-right > button{
+    padding: 6px 12px;
+    margin: 12px;
+    border-radius: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+}
+#getItShipped-twobox-right > p{
+    font-size: 12px;
+}
+
+
+
+.cartproducts-card{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin-bottom: 50px;
+    background-color: white;
+}
+.product-img{
+    margin: 12px;
+}
+.cartproducts-card-details{
+    margin-left: 12px;
+}
+.cartproducts-card-details > h4{
+    padding: 0px 3px;
+}
+.cartproducts-card-details > p{
+    padding: 3px;
+}
+.cartproducts-card-details-item{
+    font-size: 13px;
+    color: rgb(103, 102, 102);
+    padding: 3px;
+}
+.cartproducts-card-details-size{
+    font-size: 12px;
+    padding: 3px;
+}
+.cartproducts-card-details-buttons{
+    margin-top: 6px;
+}
+#product-number{
+    padding: 6px;
+}
+.cartproducts-card-details-btn{
+    border: 0px;
+    background-color: white;
+    color: blue;
+    padding: 6px;
+    cursor: pointer;
+}
+.cartproducts-card-details-btn:hover{
+    text-decoration: underline;
+}
+.cartproducts-card-price{
+    margin-left: 60px;
+}
+.cartProductPrice{
+    margin-bottom: 70px;
+    margin-left: 40px;
+}
+.change-method{
+    padding: 6px 12px;
+    background-color: white;
+    border-radius: 24px;
+    cursor: pointer;
+}
+.getItShipped-h3{
+    margin: 12px;
+}
+
+
+#cartRecommendation{
+    padding: 12px -6px; 
+    margin: 6px;
+    background-color: white;
+}
+.cartRecommendation-card-price{
+    margin-right: 0px;
+    margin-left: 90px;
+}
+.recommendation-add{
+    padding: 6px 18px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+
+#lowerleft-div{
+    text-align: center;
+    margin: 12px;
+}
+#lowerleft-div > h4{
+    margin: 12px;
+}
+#lowerleft-signin{
+    padding: 12px 80px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border-radius: 24px;
+    margin: 12px;
+    cursor: pointer;
+}
+#lowerleft-signin:hover{
+    color: grey;
+    border: 2px solid grey;
+}
+
+
+
+#right{
+    margin-left: 30px;
+    margin-top: 78px;
+}
+#rightTop{
+    border: 0.5px solid grey;
+    border-radius: 3px;
+    padding: 12px;
+}
+#rightTop1{
+    display: flex;
+    justify-content: space-between;
+}
+#rightTop1-p{
+    align-self: flex-start;
+}
+#rightTop1-p > p,h4{
+    padding: 3px;
+}
+#rightTop1-h{
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+#rightTop1-h > h4{
+    padding: 3px;
+}
+.righTop1-estimate{
+    margin-top: 12px;
+}
+.cart-subtotal{
+    margin-top: 5px;
+}
+
+#rightTop2{
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+
+#rightTop3{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.RightTop-btn{
+    margin: 6px;
+    padding: 12px 55px;
+    border-radius: 24px;
+    font-weight: bold;
+    font-size: 15px;
+}
+.RightTop-btn > img{
+    width: 84px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+#paypal{
+    display: flex;
+    background-color: white;
+    cursor: pointer;
+}
+#checkout{
+    background-color: rgb(207, 17, 44);
+    color: white;
+    border: 0px;
+    padding: 14px 55px;
+    cursor: pointer;
+}
+
+
+#right-promo{
+    margin-top: 14px;
+    border: 0.5px solid grey;
+    border-radius: 3px;
+    text-align: center;
+    padding: 24px;
+}
+#right-promo > p{
+    font-size: 12px;
+    margin-left: 160px;
+}
+#right-promocode{
+    padding: 14px 55px;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+
+#canadaCheckout{
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    padding: 24px 0px;
+}
+#canadaCheckout > img{
+    width: 24px;
+    padding-right: 6px;
+}
+#canadaCheckout:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+#right-giftcard{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0.5px solid gray;
+    padding: 12px;
+    border-radius: 3px;
+}
+#right-giftcard > img{
+    width: 50px;
+    margin: 12px;
+}
+#right-giftcard > div > p{
+    font-size: 12px;
+}
+#right-giftcard-buttons{
+    margin-top: 12px;
+}
+#giftcard{
+    padding: 6px;
+}
+#giftcard-apply{
+    padding: 6px 24px;
+    font-weight: bold;
+    border-radius: 24px;
+    color: black;
+    background-color: white;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+
+#right-assistance{
+    border: 0.5px solid gray;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 3px;
+}
+#right-assistance-img >img{
+    width: 36px;
+}
+
+
+
+
+@media screen and (max-width: 950px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+}

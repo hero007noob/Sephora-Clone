@@ -8,212 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap" rel="stylesheet">
-    <style>
-        *{
-            font-family: 'Lato', sans-serif;
-            font-family: 'Roboto', sans-serif;
-            padding: 0px;
-            margin: 0px;
-        }
-        #topmost-h{
-            margin: 24px 0px;
-        }
-        .container{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid black;
-        }
-        #creditCardProgram{
-            border: 0.5px solid grey;
-            border-radius: 3px;
-            padding: 9px;
-            /* width: 600px; */
-        }
-        #creditCardProgram-div{
-            /* border: 1px solid black; */
-            display: flex;
-            padding: 6px 0px;
-
-        }
-        #creditCardProgram-div > p{
-            margin: 6px;
-            font-size: 14px;
-            width: 400px;
-        }
-        #creditCardProgram-div > img{
-            width: 50px;
-        }
-        #creditCardProgram-btn{
-            /* padding: -50px 100px; */
-            padding:3px 12px;
-            margin: 6px;
-            border-radius: 24px;
-            color: black;
-            font-weight: bold;
-            background-color: white;
-        }
-        .condition{
-            font-size: 12px;
-        }
-
-
-        #getItShipped{
-            border: 0.5 px solid grey;
-            background-color: #f6f6f8;
-            padding: 6px;
-            margin: 12px 0px;
-            
-        }
-        #getItShipped-innerdiv{
-            /* border: 0.5px solid gray; */
-            background-color: white;
-            margin: 6px;
-            padding: 12px;
-        }
-        #getItShipped-upperIcon{
-            display: flex;
-        }
-        #getItShipped-upperIcon > p{
-            font-size: 14px;
-        }
-        #getItShipped-upperIcon-img{
-            width: 25px;
-            height: 25px;
-            margin: 6px;
-        }
-        #getItShipped-twobox{
-            margin: 12px;
-            display: flex;
-        }
-        #getItShipped-twobox-left{
-            border: 1px solid grey;
-            padding: 12px;
-            text-align: center;
-            font-size: 14px;
-            margin: 6px;
-        }
-        #getItShipped-twobox-right{
-            border: 1px solid grey;
-            padding: 12px;
-            margin: 6px;
-            display: flex;
-        }
-        #getItShipped-twobox-right > button{
-            padding: 6px 12px;
-            margin: 12px;
-            border-radius: 18px;
-            font-weight: bold;
-            color: white;
-            background-color: black;
-        }
-        #getItShipped-twobox-right > p{
-            font-size: 12px;
-        }
-
-
-
-        .cartproducts-card{
-            display: flex;
-            align-items: center;
-            /* justify-content: center; */
-            margin-bottom: 50px;
-            background-color: white;
-        }
-        .product-img{
-            margin: 12px;
-        }
-        .cartproducts-card-details{
-            margin-left: 12px;
-        }
-        .cartproducts-card-details > h4{
-            padding: 0px 3px;
-        }
-        .cartproducts-card-details > p{
-            padding: 3px;
-        }
-        .cartproducts-card-details-item{
-            font-size: 13px;
-            color: rgb(103, 102, 102);
-            padding: 3px;
-        }
-        .cartproducts-card-details-size{
-            font-size: 12px;
-            padding: 3px;
-        }
-        .cartproducts-card-details-buttons{
-            margin-top: 6px;
-        }
-        #product-number{
-            padding: 6px;
-        }
-        .cartproducts-card-details-btn{
-            border: 0px;
-            background-color: white;
-            color: blue;
-            padding: 6px;
-            cursor: pointer;
-        }
-        .cartproducts-card-details-btn:hover{
-            text-decoration: underline;
-        }
-        .cartproducts-card-price{
-            margin-left: 60px;
-        }
-        .cartProductPrice{
-            margin-bottom: 70px;
-            margin-left: 40px;
-        }
-        .change-method{
-            padding: 6px 12px;
-            background-color: white;
-            border-radius: 24px;
-            cursor: pointer;
-        }
-        .getItShipped-h3{
-            margin: 12px;
-        }
-
-
-        #cartRecommendation{
-            padding: 12px -6px; 
-            margin: 6px;
-            background-color: white;
-        }
-        .cartRecommendation-card-price{
-            margin-right: 0px;
-            margin-left: 90px;
-        }
-        .recommendation-add{
-            padding: 6px 18px;
-            font-weight: bold;
-            background-color: white;
-            border-radius: 24px;
-            cursor: pointer;
-        }
-
-
-        #lowerleft-div{
-            text-align: center;
-            margin: 12px;
-        }
-        #lowerleft-div > h4{
-            margin: 12px;
-        }
-        #lowerleft-signin{
-            padding: 12px 80px;
-            font-weight: bold;
-            color: black;
-            background-color: white;
-            border-radius: 24px;
-            margin: 12px;
-            cursor: pointer;
-        }
-        #lowerleft-signin:hover{
-            color: grey;
-            border: 2px solid grey;
-        }
-    </style>
+    <link rel="stylesheet" href="./basket.css">
 </head>
 
 <body>
@@ -361,7 +156,85 @@
             </div>
         </div>
         <div id="right">
+            <div id="rightTop">
+                <div id="rightTop1">
+                    <div id="rightTop1-p">
+                        <p>Merchandise Subtotal</p>
+                        <p>Shipping & Handling</p>
+                        <p>Estimated Tax & Other Fees</p>
+                        <h4 class="righTop1-estimate">Estimated total</h4>
+                    </div>
+                    <div id="rightTop1-h">
+                        <h4 class="cart-subtotal">$154.90</h4>
+                        <h4>FREE</h4>
+                        <h4>TBD</h4>
+                        <hr>
+                        <h4 class="cart-subtotal" class="righTop1-estimate">$154.90</h4>
+                    </div>
+                </div>
+                <div id="rightTop2">
+                    <p>or 4 payments of $38.73 with <b>Klarna</b> </p>
+                    <p>or <b> afterpay</b> </p>
+                    <br>
+                    <p>Shipping & taxes calculated during checkout</p>
+                </div>
+                <div id="rightTop3">
+                    <button id="checkout" class="RightTop-btn">checkout Shipped Items</button>
+                    <button id="paypal" class="RightTop-btn">Pay With <img src="https://www.sephora.com/img/ufe/logo-paypal.svg" alt=""></button>
+                </div>
+            </div>
 
+            <div id="right-promo">
+                <p>View featured offers﻿</p>
+                <input id="right-promocode" type="text" placeholder="Promo or Reward Code">
+            </div>
+
+            <div id="canadaCheckout">
+                <img src="https://www.sephora.com/img/ufe/flags/ca.svg" alt="">
+                <p>Canada Checkout ></p>
+            </div>
+
+            <div id="right-giftcard">
+                <img src="https://www.sephora.com/img/ufe/payments/giftCard.svg" alt="">
+                <div>
+                    <h4>Add a Sephora Gift Card</h4>
+                    <p>The super-easy gift on everyone's list</p>
+                    <div id="right-giftcard-buttons">
+                        <select name="giftcard" id="giftcard">
+                            <option value="10">$10</option>
+                            <option value="25">$25</option>
+                            <option value="40">$40</option>
+                            <option value="50">$50</option>
+                            <option value="75">$75</option>
+                            <option value="100">$100</option>
+                            <option value="150">$150</option>
+                            <option value="200">$200</option>
+                            <option value="250">$250</option>
+                        </select>
+                        <button id="giftcard-apply">Add to Basket</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="right-assistance">
+                <h4>Need assistance?</h4>
+                <br>
+                <p>1-877-SEPHORA (1-877-737-4672)</p>
+                <p>TTY: 1-888-866-9845</p>
+                <br>
+                <p>Free return shipping or return in store</p>
+                <br>
+                <p>We accept</p>
+                <div id="right-assistance-img">
+                    <img src="https://www.sephora.com/img/ufe/payments/sephora.svg" alt="">
+                    <img src="https://www.sephora.com/img/ufe/payments/payPal.svg" alt="">
+                    <img src="https://www.sephora.com/img/ufe/payments/visa.svg" alt="">
+                    <img src="https://www.sephora.com/img/ufe/payments/masterCard.svg" alt="">
+                    <img src="https://www.sephora.com/img/ufe/payments/discover.svg" alt="">
+                    <img src="https://www.sephora.com/img/ufe/payments/americanExpress.svg" alt="">
+                </div>
+                
+            </div>
         </div>
     </div>
     <footer>
