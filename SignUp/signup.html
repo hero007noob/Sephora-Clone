@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/SignUp/login-signup.css" />
+  </head>
+  <body>
+    <div id="sign-up-div">
+      <div id="sign-up-popup">
+        <div id="sign-up-popup-header">
+          <p>Create an Account</p>
+          <div id="sign-up-close-btn">
+            <img src="./Assets/cross.svg" alt="" />
+          </div>
+        </div>
+        <div id="sign-up-popup-body">
+          <img
+            src="https://www.sephora.com/img/ufe/bi/logo-beauty-insider.svg"
+            alt="" />
+          <p
+            >Join the Beauty Insider loyalty program. Earn points, get
+            <span class="text-bold">FREE standard shipping</span>, redeem
+            rewards, and more.</p
+          >
+          <div id="sign-up-name-div">
+            <div class="form-input-style" id="sign-up-first-name">
+              <div>
+                <input type="text" id="fname" placeholder="First Name" />
+                <img src="./Assets/warn.svg" alt="" />
+              </div>
+              <p class="error-tooltip">First name required</p>
+            </div>
+            <div class="form-input-style" id="sign-up-last-name">
+              <div>
+                <input id="lname" type="text" placeholder="Last Name" />
+                <img src="./Assets/warn.svg" alt="" />
+              </div>
+              <p class="error-tooltip">Last name required</p>
+            </div>
+          </div>
+          <div class="form-input-style" id="sign-up-email">
+            <div>
+              <input id="email" type="email" placeholder="Email Address" />
+              <img src="./Assets/warn.svg" alt="" />
+            </div>
+            <p class="error-tooltip">Please enter your email address. </p>
+          </div>
+          <div class="form-input-style" id="sign-up-password">
+            <div>
+              <input
+                id="password"
+                type="password"
+                placeholder="Password (6 to 12 characters)" />
+              <img src="./Assets/warn.svg" alt="" />
+            </div>
+            <p class="error-tooltip"
+              >Please enter a password between 6-12 characters</p
+            >
+          </div>
+          <div class="form-input-style" id="sign-up-phone">
+            <input
+              id="phone"
+              type="text"
+              placeholder="Phone Number(optional)" />
+          </div>
+          <div id="sign-up-birth-title-div">
+            <img
+              src="https://www.sephora.com/img/ufe/icons/birthday.svg"
+              alt="" />
+            <p class="text-bold"
+              >Enter your birthdate to receive a free gift every year.</p
+            >
+          </div>
+          <div id="sign-up-birth-div">
+            <div class="form-input-style" id="sign-up-month">
+              <p>Month</p>
+              <select name="" id="sign-up-month-select"></select>
+              <p class="error-tooltip">Please enter your birth month</p>
+            </div>
+            <div class="form-input-style" id="sign-up-day">
+              <p>Day</p>
+              <select name="" id="sign-up-day-select"> </select>
+              <p class="error-tooltip">Please enter your birth date</p>
+            </div>
+          </div>
+          <div class="form-input-style" id="sign-up-zip">
+            <input id="zip" type="text" placeholder="Zip" />
+          </div>
+          <div id="sign-up-keep-signed">
+            <div class="checkBox">
+              <img src="./Assets/check.png" alt="" />
+            </div>
+            <p>Keep me signed in</p>
+          </div>
+          <div id="sign-up-terms">
+            <p class="text-small"
+              >By clicking “Join Now” you acknowledge that you are a U.S. or
+              Canada resident and (1) have read Sephora’s
+              <a href="https://policies.google.com/privacy?hl=en"
+                >Privacy Policy</a
+              >
+              and
+              <a
+                href="https://www.sephora.com/beauty/privacy-policy#USNoticeIncentive"
+                >Notice of Financial Incentive</a
+              >, (2), agree to
+              <a
+                href="https://policies.google.com/terms?hl=en"
+                class="text-bold"
+                >TERMS OF USE, BEAUTY INSIDER TERMS</a
+              >, and to automatically receive Beauty Insider offers and
+              notifications via email.</p
+            >
+          </div>
+          <div id="sign-up-joinnow" class="black-round-btn">
+            <p>Join Now</p>
+          </div>
+        </div>
+        <div id="sign-up-footer">
+          <p class="text-small">
+            Sephora uses Google ReCaptcha and by registering, users are subject
+            to Google’s
+            <a href="https://policies.google.com/privacy?hl=en"
+              >privacy policy</a
+            >
+            & <a href="https://policies.google.com/terms?hl=en">terms</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="a123"></div>
+  </body>
+  <script type="module" src="./signup.js"></script>
+  <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+</html>
