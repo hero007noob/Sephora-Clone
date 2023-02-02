@@ -47,147 +47,245 @@ let sidebarBottomFiltersData = [
     values: ["Under $25", "$25 to $50", "$50 to $100", "$100 and above"],
   },
 ];
-let sampleData = [
+let currentData = [
   {
-    brand_name: "SEPHORA COLLECTION",
-    list_price: "10.00",
-    sale_price: "10.00",
-    display_name: "Color Shifter Mini Eyeshadow Palette",
+    _id: "63da5e720cbf4622ddcb69f5",
+    brand_name: "ILIA",
+    list_price: 34,
+    sale_price: 0,
+    display_name: "Multi-Stick Cream Blush + Highlighter + Lip Tint",
+    image_alt_text: "ILIA - Multi-Stick Cream Blush + Highlighter + Lip Tint",
     hero_img:
-      "https://www.sephora.com/productimages/sku/s2606630-main-zoom.jpg?imwidth=270&pb=2020-03-sephora-value-2020",
-    more_colors: 3,
-    product_id: "P503921",
-    rating: "4.2222",
-    reviews: "9",
+      "https://www.sephora.com/productimages/sku/s2564359-main-zoom.jpg?imwidth=270&pb=2020-03-sephora-clean-2019",
+    more_colors: 11,
+    product_id: "P411848",
+    rating: 4.2326,
+    reviews: 1221,
     target_url:
-      "https://www.sephora.com/product/sephora-collection-sc-color-shifter-mini-eyeshadow-palette-P503921?skuId=2606630",
-    same_day_eligible: false,
+      "https://www.sephora.com/product/multi-stick-P411848?skuId=2564359",
+    same_day_eligible: true,
+    is_new: false,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2564359",
+    is_sale: false,
+    product_type: "Lip",
+  },
+  {
+    _id: "63da5e720cbf4622ddcb69f6",
+    brand_name: "ILIA",
+    list_price: 48,
+    sale_price: 0,
+    display_name: "Super Serum Skin Tint SPF 40 Foundation",
+    image_alt_text: "ILIA - Super Serum Skin Tint SPF 40 Foundation",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2333607-main-zoom.jpg?imwidth=270&pb=allure-best-2020",
+    more_colors: 29,
+    product_id: "P455418",
+    rating: 3.7055,
+    reviews: 3515,
+    target_url:
+      "https://www.sephora.com/product/ilia-super-serum-skin-tint-spf-40-P455418?skuId=2333607",
+    same_day_eligible: true,
+    is_new: false,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2333607",
+    is_sale: false,
+  },
+  {
+    _id: "63da5e720cbf4622ddcb69f8",
+    brand_name: "Rare Beauty by Selena Gomez",
+    list_price: 30,
+    sale_price: 0,
+    display_name:
+      "Positive Light Tinted Moisturizer Broad Spectrum SPF 20 Sunscreen",
+    image_alt_text:
+      "Rare Beauty by Selena Gomez - Positive Light Tinted Moisturizer Broad Spectrum SPF 20 Sunscreen",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2557437-main-zoom.jpg?imwidth=270",
+    more_colors: 23,
+    product_id: "P482729",
+    rating: 4.1844,
+    reviews: 933,
+    target_url:
+      "https://www.sephora.com/product/rare-beauty-by-selena-gomez-positive-light-tinted-moisturizer-broad-spectrum-spf-20-sunscreen-P482729?skuId=2557437",
+    same_day_eligible: true,
+    is_new: false,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2557437",
+    is_sale: false,
+  },
+  {
+    _id: "63da5e720cbf4622ddcb6a01",
+    brand_name: "IT Cosmetics",
+    list_price: 44,
+    sale_price: 0,
+    display_name:
+      "CC+ Nude Glow Lightweight Foundation + Glow Serum with SPF 40 and Niacinamide",
+    image_alt_text:
+      "IT Cosmetics - CC+ Nude Glow Lightweight Foundation + Glow Serum with SPF 40 and Niacinamide",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2515922-main-zoom.jpg?imwidth=270",
+    more_colors: 21,
+    product_id: "P482010",
+    rating: 4.4306,
+    reviews: 1707,
+    target_url:
+      "https://www.sephora.com/product/it-cosmetics-cc-nude-glow-lightweight-foundation-glow-serum-spf-40-niacinamide-P482010?skuId=2515922",
+    same_day_eligible: true,
+    is_new: false,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2515922",
+    is_sale: false,
+  },
+  {
+    _id: "63da5e720cbf4622ddcb6a04",
+    brand_name: "NARS",
+    list_price: 34,
+    sale_price: 0,
+    display_name: "Powermatte Long-Lasting Lipstick",
+    image_alt_text: "NARS - Powermatte Long-Lasting Lipstick",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2599108-main-zoom.jpg?imwidth=270",
+    more_colors: 11,
+    product_id: "P501583",
+    rating: 4.532,
+    reviews: 250,
+    target_url:
+      "https://www.sephora.com/product/nars-powermatte-lipstick-P501583?skuId=2599108",
+    same_day_eligible: true,
+    is_new: false,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2599108",
+    is_sale: false,
+    product_type: "Lip",
+  },
+  {
+    _id: "63da5e720cbf4622ddcb6a06",
+    brand_name: "Charlotte Tilbury",
+    list_price: 48,
+    sale_price: 0,
+    display_name: "Glow Glide Face Architect Highlighter",
+    image_alt_text: "Charlotte Tilbury - Glow Glide Face Architect Highlighter",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2643377-main-zoom.jpg?imwidth=270",
+    more_colors: 5,
+    product_id: "P503729",
+    rating: 4.3663,
+    reviews: 404,
+    target_url:
+      "https://www.sephora.com/product/charlotte-tilbury-hollywood-glow-glide-highlighter-P503729?skuId=2643377",
+    same_day_eligible: true,
     is_new: true,
     is_best: false,
     is_organic: false,
     is_natural: false,
-    sku_id: "2606630",
+    sku_id: "2643377",
+    is_sale: false,
+    product_type: "Face",
   },
   {
-    brand_name: "Saie",
-    list_price: "25.00",
-    sale_price: "25.00",
-    display_name: "Dew Blush Liquid Cheek Blush",
+    _id: "63da5e720cbf4622ddcb6a0d",
+    brand_name: "Benefit Cosmetics",
+    list_price: 35,
+    sale_price: 0,
+    display_name: "Cookie and Tickle Powder Highlighters",
+    image_alt_text: "Benefit Cosmetics - Cookie and Tickle Powder Highlighters",
     hero_img:
-      "https://www.sephora.com/productimages/sku/s2564730-main-zoom.jpg?imwidth=270&pb=clean-planet-positive-badge-2021",
-    more_colors: 5,
-    product_id: "P469825",
-    rating: "4.4121",
-    reviews: "512",
-    target_url:
-      "https://www.sephora.com/product/saie-dew-blush-liquid-cheek-blush-P469825?skuId=2564730",
-    same_day_eligible: true,
-    is_new: false,
-    is_best: false,
-    is_organic: false,
-    is_natural: false,
-    sku_id: "2564730",
-  },
-  {
-    brand_name: "MAKEUP BY MARIO",
-    list_price: "30.00",
-    sale_price: "30.00",
-    display_name: "SoftSculpt® Shaping Stick",
-    hero_img:
-      "https://www.sephora.com/productimages/sku/s2457299-main-zoom.jpg?imwidth=270&pb=allure-2022-bestofbeauty-badge",
-    more_colors: 5,
-    product_id: "P472327",
-    rating: "3.9401",
-    reviews: "284",
-    target_url:
-      "https://www.sephora.com/product/makeup-by-mario-soft-sculpt-shaping-stick-P472327?skuId=2457299",
-    same_day_eligible: true,
-    is_new: false,
-    is_best: false,
-    is_organic: false,
-    is_natural: false,
-    sku_id: "2457299",
-  },
-  {
-    brand_name: "Too Faced",
-    list_price: "16.00 - 28.00",
-    sale_price: "16.00 - 28.00",
-    display_name: "Better Than Sex Volumizing & Lengthening Mascara",
-    hero_img:
-      "https://www.sephora.com/productimages/sku/s1533439-main-zoom.jpg?imwidth=270",
-    more_colors: 2,
-    product_id: "P381000",
-    rating: "3.741",
-    reviews: "19021",
-    target_url:
-      "https://www.sephora.com/product/better-than-sex-mascara-P381000?skuId=1533439",
-    same_day_eligible: true,
-    is_new: false,
-    is_best: false,
-    is_organic: false,
-    is_natural: false,
-    sku_id: "1533439",
-  },
-  {
-    brand_name: "Rare Beauty by Selena Gomez",
-    list_price: "11.00 - 20.00",
-    sale_price: "11.00 - 20.00",
-    display_name: "Perfect Strokes Universal Volumizing Mascara",
-    hero_img:
-      "https://www.sephora.com/productimages/sku/s2474138-main-zoom.jpg?imwidth=270",
-    more_colors: 0,
-    product_id: "P475599",
-    rating: "4.387",
-    reviews: "1372",
-    target_url:
-      "https://www.sephora.com/product/rare-beauty-by-selena-gomez-perfect-strokes-universal-volumizing-mascara-P475599?skuId=2474138",
-    same_day_eligible: true,
-    is_new: false,
-    is_best: false,
-    is_organic: false,
-    is_natural: false,
-    sku_id: "2474138",
-  },
-  {
-    brand_name: "NARS",
-    list_price: "15.00",
-    sale_price: "15.00",
-    display_name: "Mini Radiant Creamy Concealer",
-    hero_img:
-      "https://www.sephora.com/productimages/sku/s2245363-main-zoom.jpg?imwidth=270",
-    more_colors: 29,
-    product_id: "P422077",
-    rating: "4.1462",
-    reviews: "1655",
-    target_url:
-      "https://www.sephora.com/product/radiant-creamy-concealer-mini-P422077?skuId=2245363",
-    same_day_eligible: true,
-    is_new: false,
-    is_best: false,
-    is_organic: false,
-    is_natural: false,
-    sku_id: "2245363",
-  },
-  {
-    brand_name: "Supergoop!",
-    list_price: "22.00 - 48.00",
-    sale_price: "22.00 - 48.00",
-    display_name:
-      "Glowscreen Sunscreen SPF 40 PA+++ with Hyaluronic Acid + Niacinamide",
-    hero_img:
-      "https://www.sephora.com/productimages/sku/s2535656-main-zoom.jpg?imwidth=270&pb=2020-03-sephora-clean-2019",
+      "https://www.sephora.com/productimages/sku/s2520468-main-zoom.jpg?imwidth=270",
     more_colors: 1,
-    product_id: "P456218",
-    rating: "4.151",
-    reviews: "1888",
+    product_id: "P447375",
+    rating: 4.7321,
+    reviews: 265,
     target_url:
-      "https://www.sephora.com/product/supergoop-glowscreen-sunscreen-spf-40-P456218?skuId=2535656",
+      "https://www.sephora.com/product/cookie-highlighter-P447375?skuId=2520468",
     same_day_eligible: true,
     is_new: false,
     is_best: false,
     is_organic: false,
     is_natural: false,
-    sku_id: "2535656",
+    sku_id: "2520468",
+    is_sale: false,
+  },
+  {
+    _id: "63da5e720cbf4622ddcb6a18",
+    brand_name: "Fenty Beauty by Rihanna",
+    list_price: 32,
+    sale_price: 0,
+    display_name: "Eaze Drop Blurring Skin Tint",
+    image_alt_text: "Fenty Beauty by Rihanna - Eaze Drop Blurring Skin Tint",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2431864-main-zoom.jpg?imwidth=270",
+    more_colors: 24,
+    product_id: "P470025",
+    rating: 3.9728,
+    reviews: 1580,
+    target_url:
+      "https://www.sephora.com/product/fenty-beauty-rihanna-eaze-drop-blurring-skin-tint-P470025?skuId=2431864",
+    same_day_eligible: true,
+    is_new: false,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2431864",
+    is_sale: false,
+  },
+  {
+    _id: "63da5e720cbf4622ddcb6a1a",
+    brand_name: "Hourglass",
+    list_price: 38,
+    sale_price: 0,
+    display_name: "Unlocked™ Satin Crème Lipstick",
+    image_alt_text: "Hourglass - Unlocked™ Satin Crème Lipstick",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2637510-main-zoom.jpg?imwidth=270",
+    more_colors: 19,
+    product_id: "P504297",
+    rating: 4.6828,
+    reviews: 145,
+    target_url:
+      "https://www.sephora.com/product/hourglass-unlocked-tm-satin-creme-lipstick-P504297?skuId=2637510",
+    same_day_eligible: true,
+    is_new: true,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2637510",
+    is_sale: false,
+    product_type: "Lip",
+  },
+  {
+    _id: "63da5e720cbf4622ddcb6a1d",
+    brand_name: "Rare Beauty by Selena Gomez",
+    list_price: 30,
+    sale_price: 0,
+    display_name: "Liquid Touch Weightless Foundation",
+    image_alt_text:
+      "Rare Beauty by Selena Gomez - Liquid Touch Weightless Foundation",
+    hero_img:
+      "https://www.sephora.com/productimages/sku/s2361525-main-zoom.jpg?imwidth=270",
+    more_colors: 47,
+    product_id: "P49848448",
+    rating: 4.0548,
+    reviews: 5093,
+    target_url:
+      "https://www.sephora.com/product/rare-beauty-by-selena-gomez-liquid-touch-weightless-foundation-P49848448?skuId=2361525",
+    same_day_eligible: true,
+    is_new: false,
+    is_best: false,
+    is_organic: false,
+    is_natural: false,
+    sku_id: "2361525",
+    is_sale: false,
   },
 ];
 let topTags = [
@@ -225,6 +323,7 @@ let topTags = [
   ],
 ];
 let isPopUP = false;
+
 window.onload = () => {
   loadFilters();
 };
@@ -237,7 +336,7 @@ function loadFilters() {
   loadSidebarBottomFilters(sidebarBottomFiltersData, sidebarBottomFilter);
   loadTopTags(topTags);
   loadBottomTags(sidebarBottomFiltersData);
-  loadAllProducts(sampleData);
+  loadAllProducts(currentData);
 }
 
 function loadSidebarTopFilters(data) {
@@ -248,11 +347,23 @@ function loadSidebarTopFilters(data) {
     p.classList.add("sidebar-top-filter-item");
     p.innerHTML = `${item}`;
     p.addEventListener("click", (event) => {
-      console.log(event.target.id.split("-", 2)[1]);
+      selectTopItem(event);
+      let value = event.target.id.split("-", 2)[1];
+      console.log("Product Type", value);
+      filterData("Product Type", value);
     });
     // p.innerHTML = `${item} (<span>0</span>)`;
     sidebarTopFilter.appendChild(p);
   });
+}
+function selectTopItem(event) {
+  console.log("here");
+  let allTopItems = document.querySelectorAll(".sidebar-top-filter-item");
+  allTopItems.forEach((e) => {
+    e.style.fontWeight = "normal";
+  });
+  event.target.style.fontWeight = "700";
+  console.log(allTopItems.length);
 }
 function loadSidebarBottomFilters(data, sidebarBottomFilter) {
   sidebarBottomFilter.innerHTML = null;
@@ -296,10 +407,10 @@ function loadSidebarBottomFilters(data, sidebarBottomFilter) {
       filter += `<li class="drop-down-filter-item" data-parent="${
         item.title
       }" id="bottom-${title.replaceAll(" ", "_")}" onclick="checkAct(event)">
-      ${item.title == "Rating" || item.title == "Price Range" ? radio : check}
-    </div>
-
-    ${item.title == "Rating" ? star : ""} ${title} </li>`;
+      ${
+        item.title == "Rating" || item.title == "Price Range" ? radio : check
+      }</div>
+${item.title == "Rating" ? star : ""} <p>${title}</p> </li>`;
     });
     filter += `</ul>
     </div>
@@ -339,10 +450,11 @@ function loadBottomTags(data) {
   });
 }
 function loadAllProducts(data) {
+  document.getElementById("all-products").innerHTML = null;
   data.forEach((product) => {
     let item = `
     <div class="product-item">
-    <div class="product-love">
+    <div class="product-love" data-parent = "${product._id}" onclick=toggleLove(event) >
       <img src="./Assets/heart-outline.svg" alt="" />
     </div>
     <div class="product-img-div">
@@ -360,7 +472,7 @@ function loadAllProducts(data) {
       `;
     let star = `<div class="rating-stars">`;
     if (product.rating) {
-      let count = +product.rating.split(".")[0];
+      let count = Math.round(product.rating);
       for (let i = 0; i < 5; i++) {
         let url = "https://www.sephora.com/img/ufe/icons/star-outline.svg";
         if (i < count) {
@@ -376,7 +488,11 @@ function loadAllProducts(data) {
       </div>
       <div class="product-price-div">
         <p class="product-list-price">$ ${product.list_price}</p>
-        <p class="product-sale-price">$ ${product.sale_price}</p>
+        ${
+          product.sale_price
+            ? `<p class="product-sale-price">$ ${product.sale_price}</p>`
+            : ""
+        }
       </div>
       <div class="same-day-delivery" style="opacity: ${
         product.same_day_eligible ? 1 : 0
@@ -418,7 +534,18 @@ function expandSection(element) {
   element.style.height = sectionHeight + "px";
   element.setAttribute("data-collapsed", "false");
 }
-
+function toggleLove(event) {
+  let img = event.target.querySelector("img");
+  if (img.src.includes("outline")) {
+    img.src = "./Assets/heart.svg";
+  } else {
+    img.src = "./Assets/heart-outline.svg";
+  }
+  console.log(
+    "toggleLove",
+    sampleData.filter((e) => e._id == event.target.dataset.parent)
+  );
+}
 function checkAct(event) {
   let li = event.target;
   let id = li.dataset.parent;
@@ -429,9 +556,121 @@ function checkAct(event) {
       if (allLis[i] != li) allLis[i].classList.remove("checked");
     }
   }
+  console.log(li.dataset.parent, li.querySelector("p").textContent);
+  filterData(li.dataset.parent, li.querySelector("p").textContent);
   li.classList.toggle("checked");
 }
-
+let brandSet = new Set();
+let prevRating = null;
+let isNew = null;
+let isSale = null;
+let isSameDay = null;
+let filters = [];
+let prodType = null;
+function filterData(parent, item) {
+  filters = filters.filter((e) => {
+    if (e.type != parent) {
+      return true;
+    }
+    return false;
+  });
+  let body = { offset: 1, count: 20 };
+  switch (parent) {
+    case "Brand":
+      if (brandSet.has(item)) {
+        brandSet.delete(item);
+      } else brandSet.add(item);
+      if (brandSet.size > 0) {
+        filters.push({ type: parent, value: [...brandSet] });
+      }
+      break;
+    case "Rating":
+      let currentRaing = +item.split(" ")[0];
+      if (prevRating != currentRaing) {
+        prevRating = currentRaing;
+      } else prevRating = null;
+      if (prevRating != null) {
+        filters.push({ type: parent, value: [prevRating, 6] });
+      }
+      break;
+    case "Pickup & Delivery":
+      if (item.includes("Same")) item = false;
+      else item = true;
+      if (isSameDay != item) {
+        isSameDay = item;
+      } else isSameDay = null;
+      if (isSameDay != null) {
+        filters.push({ type: parent, value: item });
+      }
+      break;
+    case "New ":
+      if (isNew != item) {
+        isNew = item;
+      } else isNew = null;
+      if (isNew != null) {
+        filters.push({ type: parent, value: item });
+      }
+      break;
+    case "Sale ":
+      if (isSale != item) {
+        isSale = item;
+      } else isSale = null;
+      if (isSale != null) {
+        filters.push({ type: parent, value: item });
+      }
+      break;
+    case "Product Type":
+      if (prodType != item) {
+        prodType = item;
+      } else prodType = null;
+      if (prodType != null) {
+        filters.push({ type: parent, value: item });
+      }
+      break;
+    case "Price Range":
+      let min = 0;
+      let max = 1000;
+      if (item.includes("Under")) max = 25;
+      else if (item.includes("above")) min = 100;
+      else if (item.includes("25")) {
+        min = 25;
+        max = 50;
+      } else {
+        min = 50;
+        max = 100;
+      }
+      filters.push({ type: parent, value: [min, max] });
+      break;
+    default:
+      break;
+  }
+  if (filters.length > 0) {
+    body.filters = filters;
+    getFillteredData(JSON.stringify(body));
+  }
+}
+async function getFillteredData(body) {
+  try {
+    let url =
+      "https://beta-sephora-express-cr5j5yn2ca-uc.a.run.app/api/v1/sephora/filtered_products";
+    let res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body,
+    });
+    let data = await res.json();
+    if (res.status == 200) {
+      console.log("res", data);
+      currentData = data;
+      localStorage.setItem("products_data", JSON.stringify(currentData));
+      loadAllProducts(data);
+    }
+  } catch (error) {
+    console.log("bhai", error);
+  }
+}
 function toggleDropDownArrow(filter) {
   let dropDownArrow = filter.querySelector("#drop-down-arrow");
   dropDownArrow.classList.toggle("rotate");
