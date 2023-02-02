@@ -1,0 +1,231 @@
+*{
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+/* #foot{
+
+} */
+#upper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(204, 204, 204);
+    padding: 8px;
+}
+#mainfoot{
+    background-color: black;
+    color: white;
+}
+#uppermainfoot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 12px; */
+}
+.uppermainfoot-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin: 6px;
+    margin-right: 50px;
+}
+.uppermainfoot-div img{
+    width: 24px;
+    height: 24px;
+    margin: 6px;
+}
+/* .uppermainfoot-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} */
+.uppermainfoot-text > h5{
+    font-size: 12px;
+    padding: 0px;
+}
+.uppermainfoot-text p{
+    font-size: 12px;
+}
+hr{
+    width: 1230px;
+    margin: auto;
+    /* height: 0.1px; */
+}
+
+
+#middlemainfoot{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+.middlemainfoot-div{
+    display: flex;
+    flex-direction: column;
+    margin: 22px;
+}
+.middlemainfoot-div  a,h5{
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    padding: 6px;
+}
+.middlemainfoot-div img{
+    width: 24px;
+}
+.middlemainfoot-div div{
+    padding: 6px;
+}
+/* #webelong{
+    
+} */
+#footersearch{
+    margin-top: 200px;
+}
+#footersearch input{
+    padding: 12px;
+    padding-right: 100px;
+    border-radius: 8px;
+    border: 0px;
+}
+#footersearch button{
+    padding: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 24px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    margin: 12px;
+}
+
+
+#lowermainfoot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#lowermainfoot-left{
+    margin-left: 150px;
+    margin-top: 24px;
+    margin-bottom: 70px;
+}
+#lowermainfoot-right{
+    margin-right: 150px;
+    margin-top: 24px;  
+    margin-bottom: 70px;
+}
+#lowermainfoot img{
+    width: 30px;
+    padding: 6px;
+}
+#lowermainfoot-left > a,p{
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    /* padding: 6px; */
+}
+#lower-lowerp{
+    margin-top: 6px;
+}
+#footer-checkimg{
+    padding: 0px;
+    width: 24px;
+    margin-bottom: -8px;
+    margin-left: -6px;
+}
+a:hover{
+    text-decoration: underline;
+}
+.footer-downloadapphr{
+    display: none;
+}
+#footer-downloadapp{
+    display: none;
+}
+#region-lowerhr{
+    display: none;
+}
+.middlemainfoot-queryh{
+    display: none;
+}
+
+
+@media screen and (max-width: 980px)  {
+    #uppermainfoot{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .uppermainfoot-div{
+        /* margin: 6px; */
+        padding: 2px;
+    }
+    #middlemainfoot{
+        display: flex;
+        flex-direction: column;
+    }
+    #footersearch{
+        margin-top: 12px;
+        padding: 0px;
+    }
+    .middlemainfoot-div h5{
+        padding: 0px;
+    }
+    #lowermainfoot{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    #lowermainfoot-left{
+        margin: 12px;
+        margin-top: 24px;
+        margin-bottom: 48px;
+    }
+    #lowermainfoot-right{
+        margin: 12px;
+        /* display: none; */
+        margin-top: -24px;
+        margin-left: 12px;
+    }
+    #footer-lowerhr{
+        display: none;
+    }
+    .footer-downloadapphr{
+        display: block;
+    }
+    #region-lowerhr{
+        display: block;
+    }
+    #footer-downloadapp{
+        display: block;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        margin-left: 12px;
+    }
+    #footer-downloadapp img{
+        width: 120px;
+    }
+    #aboutsephora{
+        display: none;
+    }
+    #mysephora{
+        display: none;
+    }
+    #help{
+        display: none;
+    }
+    .middlemainfoot-queryh{
+        display: block;
+    }
+    .middlemainfoot-queryh > h5{
+        margin-left: 12px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+
+
+  }
