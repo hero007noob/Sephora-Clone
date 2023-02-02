@@ -741,7 +741,6 @@ export default class Navbar {
     this.markup = x;
     return x;
   }
-  displayModal() {}
   createElementFromHTML(htmlString) {
     var div = document.createElement("div");
     div.innerHTML = htmlString.trim();
