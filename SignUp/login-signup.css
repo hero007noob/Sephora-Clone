@@ -138,6 +138,7 @@ body {
   margin-top: 10px;
   margin-right: 5px;
 }
+
 #sign-up-close-btn > img,
 #log-in-close-btn > img {
   width: 100%;
@@ -149,6 +150,9 @@ body {
   height: 23px;
   font-size: 14px;
 }
+#log-in-keep-signed {
+  margin-bottom: 25px;
+}
 #sign-up-footer {
   padding: 0 5%;
 }
@@ -158,6 +162,16 @@ body {
 #log-in-footer {
   margin: 15px 0;
   border-top: 1px solid #efefef;
+}
+#log-in-footer {
+  padding: 0 5%;
+}
+#log-in-terms {
+  margin: 0;
+  padding: 0;
+}
+#log-in-terms > p {
+  font-size: 11px;
 }
 input,
 select {
@@ -176,6 +190,17 @@ select {
   width: 220px;
   border-radius: 50px;
   font-weight: bold;
+}
+.outline-btn {
+  background-color: #fff;
+  color: #222;
+  padding: 0;
+  display: flex;
+  border: 2px solid #222;
+}
+.login-btn-height {
+  height: 45px;
+  margin: 0;
 }
 .checkBox {
   border: 2px solid rgb(102, 102, 102);
