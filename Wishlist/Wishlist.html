@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wishlist</title>
-    <link rel="stylesheet" href="Wishlist.css">
-</head>
-<body>
-    <div id="wishlistmain">
-
+    <link rel="stylesheet" href="Wishlist.css" />
+  </head>
+  <body>
+    <div class="wishlisthead">
+      <div class="wishlisthead__content">
+        <p>&#60; Back to Lists</p>
+        <h1>Loves</h1>
+      </div>
     </div>
-</body>
+    <div id="wishlistbody">
+      <div id="wishlistsharesort">
+        <div id="wishlistsharediv">
+          <img src="./share.svg" alt="" id="wishlistshareimg" />
+          <p>Share</p>
+        </div>
+        <div class="sortdropdown">
+          <div id="sort-dropdown-div">
+            <p>Sort by:</p>
+            <div onclick="myFunction()" class="dropbtn">Dropdown</div>
+          </div>
+          <div id="myDropdown" class="dropdown-content">
+            <div class="sort-option"><p>Recently Added</p></div>
+            <div class="sort-option"><p>Brand name A-Z</p></div>
+            <div class="sort-option"><p>Brand name Z-A</p></div>
+            <div class="sort-option"><p>Price high to low</p></div>
+            <div class="sort-option"><p>Price low to high</p></div>
+          </div>
+        </div>
+      </div>
+      <div id="wishlistmain"> </div>
+    </div>
+  </body>
 </html>
 <script src="./Wishlist.js"></script>
-
