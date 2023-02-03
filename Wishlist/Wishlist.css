@@ -1,100 +1,91 @@
-#wishlistmain{
-    /* border: 2px solid crimson; */
+#wishlistmain {
+  /* border: 2px solid crimson; */
 }
-.item{
-    /* border: 2px solid green; */
-    display: flex;
-    flex-wrap: wrap;
-
+.item {
+  /* border: 2px solid green; */
+  display: flex;
+  flex-wrap: wrap;
 }
-.imagediv{
-    /* border: 150px solid yellow; */
-    margin: 15px;
-
+.imagediv {
+  /* border: 150px solid yellow; */
+  margin: 15px;
 }
-.details{
-    /* border: 2px solid blue; */
-    margin-top: 15px;
+.details {
+  /* border: 2px solid blue; */
+  margin-top: 15px;
 }
-.details1{
-    /* border: 2px solid rgb(238, 28, 0); */
-    font-weight: bolder;
-    font-size: 14px;
-    line-height: 18px;
+.details1 {
+  /* border: 2px solid rgb(238, 28, 0); */
+  font-weight: bolder;
+  font-size: 14px;
+  line-height: 18px;
 }
-.pricediv{
-    /* border: 2px solid rgb(235, 18, 162); */
-    margin-top: 15px;
+.pricediv {
+  /* border: 2px solid rgb(235, 18, 162); */
+  margin-top: 15px;
 }
-.basketbuttondiv{
-    /* border: 2px solid orangered; */
-    margin-top: 15px;
-    
+.basketbuttondiv {
+  /* border: 2px solid orangered; */
+  margin-top: 15px;
 }
- .basketbuttondiv >button{
-    height: 44px;
-    min-height: 44px;
-
-} 
-.icondiv{
-    /* border: 2px solid slateblue; */
-
+.basketbuttondiv > button {
+  height: 44px;
+  min-height: 44px;
+}
+.icondiv {
+  /* border: 2px solid slateblue; */
 }
 
- #wishlistmain{
-    /* border: 2px solid crimson; */
-    width: 80%;
-    margin: auto;
+#wishlistmain {
+  /* border: 2px solid crimson; */
+  width: 80%;
+  margin: auto;
 }
-.item{
-    /* border: 2px solid green; */
-    display: flex;
-    gap: 50px;
-    /* border-bottom: 1.5px solid rgb(197, 193, 193); */
+.item {
+  /* border: 2px solid green; */
+  display: flex;
+  gap: 50px;
+  /* border-bottom: 1.5px solid rgb(197, 193, 193); */
 }
-.item >.basketbuttondiv> button{
-    height: 30px;
-    /* color: white; */
-    background-color: #cf112c;
-    color: #ffffff;
-    border-radius: 25px;
-    padding: 5px 16px 4px 16px;
-    padding-left: 30px;
-    padding-right: 30px;
-    text-align: center;
-    border: none;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 700;
-    font-family: "helvetica neue", helvetica, arial, sans-serif;
-
+.item > .basketbuttondiv > button {
+  height: 30px;
+  /* color: white; */
+  background-color: #cf112c;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 5px 16px 4px 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  border: none;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 700;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
 .item > .icondiv > button {
-    height: 30px;
-    /* color: white; */
-    background-color: #cf112c;
-    color: #ffffff;
-    border-radius: 25px;
-    padding: 5px 16px 4px 16px;
-    padding-left: 30px;
-    padding-right: 30px;
-    text-align: center;
-    border: none;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 700;
-    font-family: "helvetica neue", helvetica, arial, sans-serif;
-    
+  height: 30px;
+  /* color: white; */
+  background-color: #cf112c;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 5px 16px 4px 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  border: none;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 700;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
-.item > .imagediv{
-    /* border: 2px solid red; */
-    width: 150px;
-    
+.item > .imagediv {
+  /* border: 2px solid red; */
+  width: 150px;
 }
-.imagediv > img{
-    width: 100%;
+.imagediv > img {
+  width: 100%;
 }
-.item>.details{
-    /* border: 2px solid blue; */
-   
-} 
+.item > .details {
+  /* border: 2px solid blue; */
+}
