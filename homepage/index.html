@@ -9,21 +9,16 @@
     <script src="index.js"></script>
 </head>
 <body>
-    <div id="slider-box">
-
-      <div id="left-button" class="slider-button">
-        <a href="#">
+    <div onmouseover="displaybutton()" id="slider-box">
+      <div  onclick="sliderleft()" id="left-button" class="slider-button">
           <span class="left"></span>
-        </a>
       </div> 
       
-      <div id="right-button" class="slider-button">
-        <a href="#">
+      <div onclick="sliderright()"  id="right-button" class="slider-button">
           <span class="right"></span>
-        </a>
       </div>
       <section>
-        <div class="slider">
+        <div id="slider1" class="slider">
             <img src=".\picture\2023-02-01-slotting-just-arrived-v2-standard-site-rwd-home-page-hero-banner-4-product-english-US-handoff_01 (1).avif" alt="">
            <div class="detail-box">
             <h2>The Latest Lineup</h2>
@@ -63,7 +58,7 @@
                 <h3>Shop Now</h3>
                </div>
         </div>
-        <div class="slider">
+        <div id="sliderl" class="slider">
             <img src="./picture/2023-01-11-slotting-bestsellers-v2-site-responsive-home-page-hero-banner-2022-xxXxx-slotting-bestsellers-v2-site-mobile-home-page-hero-banner-US_01.avif" alt="">
             <div class="detail-box">
                 <h2>The Latest Lineup</h2>
@@ -77,19 +72,15 @@
 <!-- Chosen For You -->
 <div id="foryou">
   <h2>Chosen For You</h2>
-  <div id="left-button2" class="slider-button2">
-    <a href="#">
+  <div onclick="slider2left()"  id="left-button2" class="slider-button2">
       <span class="left2"></span>
-    </a>
   </div> 
   
-  <div id="right-button2" class="slider-button2">
-    <a href="#">
+  <div onclick="slider2right()"  id="right-button2" class="slider-button2">
       <span class="right2"></span>
-    </a>
   </div>
-  <div class="foryou-slider">
-    <div>
+  <div id="slider2" class="foryou-slider">
+    <div  >
       <img src="https://www.sephora.com/productimages/sku/s2461812-main-zoom.jpg?imwidth=166" alt="">
       <h3>Sol de Janeiro</h3>
       <p>Brazilian Crush Cheirosa <br> '40 Bom Dia Hair & Bod...</p>
@@ -157,18 +148,14 @@
 <!-- Just Dropped-->
 <div id="foryou">
   <h2>Just Dropped</h2>
-  <div id="left-button2" class="slider-button2">
-    <a href="#">
+  <div onclick="slider3left()" id="left-button2" class="slider-button2">
       <span class="left2"></span>
-    </a>
   </div> 
   
-  <div id="right-button2" class="slider-button2">
-    <a href="#">
+  <div onclick="slider3right()" id="right-button2" class="slider-button2">
       <span class="right2"></span>
-    </a>
   </div>
-  <div class="foryou-slider">
+  <div id="slider3" class="foryou-slider">
     <div>
       <img src="https://www.sephora.com/productimages/sku/s2461812-main-zoom.jpg?imwidth=166" alt="">
       <h3>Sol de Janeiro</h3>
