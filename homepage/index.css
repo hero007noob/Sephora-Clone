@@ -76,7 +76,7 @@ a {
   display: inline-block;
   width: 3em;
   height: 3em;
-  background-color: #0E0D17;
+  background-color: #100B17;
   border-radius: 50%;
   margin-right: 1.5em;
 }
@@ -103,7 +103,7 @@ a {
   display: inline-block;
   width: 3em;
   height: 3em;
-  background-color: #0E0D17;
+  background-color: #100B17;
   border-radius: 50%;
   margin-left: 1.5em;
 }
@@ -147,7 +147,8 @@ a {
   margin-left: 15px;
   box-shadow: 1px 1px 2px 2px rgb(211, 208, 208);
   border-radius: .2em;
-  width: 380px;
+  border: .2px solid rgb(201, 198, 198);
+  width: 390px;
 }
 .foryou-slider >div:hover{
   margin-top: -5px;
@@ -177,7 +178,7 @@ a {
   display: inline-block;
   width: 2.9em;
   height: 2.9em;
-  background-color: #0E0D17;
+  background-color: #4C4C4C;
   border-radius: 50%;
   margin-right: 1.5em;
 
@@ -186,8 +187,8 @@ a {
 .left2:after {
   content: '';
 	display: inline-block;
-  margin-top: .7em;
-  margin-left: 0.9em;
+  margin-top: .9em;
+  margin-left: 1em;
   width: .8em;
   height: .8em;
   border-top: 0.2em solid white;
@@ -208,7 +209,7 @@ a {
   display: inline-block;
   width: 2.9em;
   height: 2.9em;
-  background-color: #0E0D17;
+  background-color: #4C4C4C;
   border-radius: 50%;
   margin-left: 1.5em;
 }
@@ -216,7 +217,7 @@ a {
 .right2:after {
   content: '';
 	display: inline-block;
-  margin-top: .7em;
+  margin-top: .9em;
   margin-left: 0.7em;
   width: .8em;
   height: .8em;
@@ -239,18 +240,23 @@ a {
   margin-left: 25px;
   position: relative;
   margin-top: 30px;
-overflow: hidden;
 }
 #foryou-b h2{
   margin-left: 8px;
 }
 .foryou-slider-b{
   display: flex;
+  overflow: hidden;
 }
 .foryou-slider-b >div{
   margin-left: 10px;
-  box-shadow: 1px 1px 2px 2px rgb(211, 208, 208);
+  box-shadow: 1px 1px 2px 2px rgb(156, 155, 155);
   border-radius: 5px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-bottom:.2px solid rgb(236, 236, 236) ;
+  border-top:.2px solid rgb(236, 236, 236) ;
+  transition: .7s;
 }
 .foryou-slider-b >div >h3{
   font-size: 15px;
@@ -261,11 +267,11 @@ overflow: hidden;
 #left-button2b{
   margin-top: 200px;
   position: absolute;
-  margin-left: 3px;
+  margin-left: 1px;
 }
 #right-button2b{
   margin: 200px;
-  margin-left: 1210px;
+  margin-left: 1202px;
 }
 .foryou-slider-b >div >h3{
   margin-left: 8px;
@@ -273,6 +279,10 @@ overflow: hidden;
 .foryou-slider-b >div:nth-child(6){
   margin-left: 50px;
 }
+.foryou-slider-b >div:nth-child(11){
+  margin-left: 50px;
+}
+
 .foryou-slider-b >div >p{
   margin-top: -15px;
   margin-left: 8px;
@@ -284,7 +294,6 @@ overflow: hidden;
 .foryou-slider-b >div >img{
   width: 240px;
   border-radius: 5px;
-  border: 1px solid crimson;
 }
 
 .button-b{
@@ -298,23 +307,40 @@ overflow: hidden;
 .foryou-slider-b >div:nth-child(1) >button{
   margin-top: 26px;
 }
+.foryou-slider-b >div:nth-child(6) >button{
+  margin-top: 26px;
+  border: 1px solid crimson;
+}
 .foryou-slider-b >div:nth-child(3) >button{
+  margin-top: 56px;
+}
+.foryou-slider-b >div:nth-child(8) >button{
   margin-top: 56px;
 }
 .foryou-slider-b >div:nth-child(4) >button{
   margin-top: 16px;
 }
+.foryou-slider-b >div:nth-child(9) >button{
+  margin-top: 16px;
+}
 .foryou-slider-b >div:nth-child(2) >button{
+  margin-top: 15px;
+}
+.foryou-slider-b >div:nth-child(7) >button{
   margin-top: 15px;
 }
 
 .foryou-slider-b >div:nth-child(5) >button{
   margin-top: 55px;
 }
+.foryou-slider-b >div:nth-child(10) >button{
+  margin-top: 55px;
+}
 
 .hr1{
-  width: 95%;
+  width: 93.7%;
   margin-top: 40px;
+  margin-left: 28px;
   margin-bottom: 40px;
 }
 
@@ -324,11 +350,9 @@ overflow: hidden;
   width: 95%;
   margin-left: 2%;
   display: flex;
-  border: 1px solid red;
 }
 #advertise1 >div{
   margin-left: 27px;
-  border: 1px solid red;
 }
 #advertise1 >div:nth-child(1){
   margin-left: 0px;
@@ -358,12 +382,13 @@ overflow: hidden;
 
 /**Featured Categories*/
 .hr2{
+  width: 94%;
   margin-top: 45px;
   margin-bottom: 45px;
 }
 #featured_c{
   display: flex;
-  border: 1px solid green;
+ 
   margin-left: 2%;
   margin-right: 2%;
 }
@@ -371,7 +396,6 @@ overflow: hidden;
 font-size: 18px;
 width: 190px;
 height:30px;
-border: 1px solid green;
 }
 #featured_c >div:nth-child(1) >p{
   margin-left:20px;
@@ -382,7 +406,6 @@ border: 1px solid green;
   margin-left: 120px;
   margin-top: 15px;
   display: flex;
-  border: 1px solid red;
 }
 #featured_c >div:nth-child(2) >div{
   width:105px ;
@@ -416,7 +439,6 @@ border: 1px solid green;
   display: flex;
   margin-top: -15px;
   margin-left: 10px;
-  border: 1px solid crimson;
 }
 .guidance >p{
   margin-top: 1px;
@@ -436,8 +458,9 @@ border: 1px solid green;
 
 /**advertisemen2*/
 .hr3{
-  width: 90%;
+  width: 94%;
   margin-top: 45px;
+  margin-left: 30px;
   margin-bottom: 45px;
 }
 
@@ -447,11 +470,9 @@ border: 1px solid green;
   width: 95%;
   margin-left: 2%;
   display: flex;
-  border: 1px solid red;
 }
 #advertise2 >div{
   margin-left: 27px;
-  border: 1px solid red;
 }
 #advertise2 >div:nth-child(1){
   margin-left: 0px;

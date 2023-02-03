@@ -33,13 +33,16 @@ function sliderleft() {
   }
 }
 
-var slide2 = 1;
-function slider2right() {
-  if (slide2 == 1) {
-    document.getElementById("slider2").style.marginLeft = " -1060px";
-    document.getElementById("left-button").style.display = "block";
-    slide1 = slide1 + 1;
-  }
+
+
+var slide2=1;
+function slider2right (){
+    if(slide2==1){
+        document.getElementById("slider2").style.marginLeft=" -1060px";
+        
+        slide1=slide1+1;
+    }
+    
 }
 
 function slider2left() {
@@ -63,4 +66,28 @@ function slider3left() {
     document.getElementById("slider3").style.marginLeft = "0px";
     slide3 = slide3 - 1;
   }
+}
+
+
+
+
+
+var slide4=1;
+function slider4right (){
+    if(slide4==1){
+        document.getElementById("slider4").style.marginLeft=" -1260px";
+        document.getElementById("b6").style.marginLeft="20px";
+        document.getElementById("foryou-slider-b").style.paddingLeft="10px"
+        slide4=slide4+1;
+    }
+    
+}
+
+function  slider4left(){
+    if(slide4==2){
+        document.getElementById("slider4").style.marginLeft="10px";
+        document.getElementById("b6").style.marginLeft="45px";
+        slide4=slide4-1;
+       
+    }
 }
