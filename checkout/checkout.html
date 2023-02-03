@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./checkout.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>S</h1>
+        <h1>E</h1>
+        <h1>P</h1>
+        <h1>H</h1>
+        <h1>O</h1>
+        <h1>R</h1>
+        <h1>A</h1>
+    </div>
+    <div class="container">
+        <div id="left">
+            <h1 id="mainheading">Checkout</h1>
+            <hr>
+            <h2 id="secondheading" >Shipping Address</h2>
+            <div id="checkout-form-container">
+                <div id="checkout-form-container-name">
+                    <input type="text" name="checkout-fname" id="checkout-fname" placeholder="First Name">
+                    <input type="text" name="checkout-lname" id="checkout-lname" placeholder="Last Name">
+                </div>
+                <div id="checkout-form-container-address">
+                    <input type="number" name="checkout-phone" id="checkout-phone" placeholder="Phone">
+                    <input type="text" name="checkout-address" id="checkout-address" placeholder="Street Address">
+                    <input type="number" name="checkout-zip" id="checkout-zip" placeholder="ZIP/Postal Code">
+                    <h4>Ship to FedEx Pickup Location</h4>
+                </div>
+            </div>
+            <button id="checkout-saveContinue">Save & Continue</button>
+            <div id="toshow">
+                <div id="localStoredAddress">
+                    <p id="localStored-name">Aahwan Verma</p>
+                    <p id="localStored-phone">4545522312</p>
+                    <p id="localStored-address">Scheme no 78</p>
+                    <p id="localStored-zip">452010</p>
+                </div>
+                <a href="" id="fedexOption">Or ship to a FedEx Pickup Location near you</a>
+                <hr id="secondhr">
+                <div id="DeliveryOption">
+                    <h2 class="thirddheading">Delivery & Gift Options</h2>
+                    <div id="localStored-delivery">
+                        <h5>FREE - Standard</h5>
+                        <p>Order within 4 hours</p>
+                        <p>Delivery By Tue, Feb 7</p>
+                    </div>
+                </div>
+                <hr id="thirdhr">
+                <div id="paymentoption">
+                    <h2 class="thirddheading">Payment Method</h2>
+                    <div id="paymentoption-div">
+                        <div class="paymentoption-div-1">
+                            <input type="radio" id="paypal" name="payment-method">
+                            <img src="https://www.sephora.com/img/ufe/payments/payPal.svg" alt="">
+                            <h4>Pay with PayPal</h4>
+                        </div>
+                        <div class="paymentoption-div-1">
+                            <input type="radio" id="paypal" name="payment-method">
+                            <img src="https://www.sephora.com/img/ufe/payments/klarna.svg" alt="">
+                            <h4>Pay with 4 interest-free payments of $28.82</h4>
+                        </div>
+                        <div class="paymentoption-div-1">
+                            <input type="radio" id="paypal" name="payment-method">
+                            <img src="https://www.sephora.com/img/ufe/payments/afterpay.svg" alt="">
+                            <h4>Pay with 4 interest-free payments of $28.82</h4>
+                        </div>
+                        <div class="paymentoption-div-1">
+                            <p>+</p>
+                            <img src="https://www.sephora.com/img/ufe/payments/placeholder.svg" alt="">
+                            <h4>Add a new credit or debit card</h4>
+                        </div>
+                    </div>
+                    <button id="final-saveContinue">Save & Continue</button>
+                </div>
+                <hr>
+                <div id="finalreview">
+                    <h2 id="lastheading" class="thirddheading">Review & Place Order</h2>
+                    <p>Please review your order information before placing your order.</p>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div id="right">
+            <div id="rightTop">
+                <div id="rightTop1">
+                    <div id="rightTop1-p">
+                        <p>Merchandise Subtotal</p>
+                        <p>Shipping & Handling</p>
+                        <p>Estimated Tax & Other Fees</p>
+                        <h4 class="righTop1-estimate">Estimated total</h4>
+                    </div>
+                    <div id="rightTop1-h">
+                        <h4 class="cart-subtotal">$154.90</h4>
+                        <h4>FREE</h4>
+                        <h4>TBD</h4>
+                        <hr>
+                        <h4 id="cart-subtotal-h" class="cart-subtotal" class="righTop1-estimate">$154.90</h4>
+                    </div>
+                </div>
+                <div id="rightTop2">
+                    <p>or 4 payments of $38.73 with <b>Klarna</b> </p>
+                    <p>or <b> afterpay</b> </p>
+                    <br>
+                    <p>Shipping & taxes calculated during checkout</p>
+                </div>
+                <div id="right-promo">
+                    <p id="promocode-show">View featured offers﻿</p>
+                    <input id="right-promocode" type="text" placeholder="Promo or Reward Code">
+                </div>
+                <div id="rightTop3">
+                    <button id="checkout" class="RightTop-btn">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./checkout.js"></script>
+</html>
