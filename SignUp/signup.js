@@ -1,5 +1,10 @@
 // import validator from "validator";
-import { ApiEndpoints } from "./Apis.js";
+class ApiEndpoints {
+  static signup =
+    "https://beta-sephora-express-cr5j5yn2ca-uc.a.run.app/api/v1/user/signup";
+  static login =
+    "https://beta-sephora-express-cr5j5yn2ca-uc.a.run.app/api/v1/user/login";
+}
 window.onload = () => {
   document.getElementById("sign-up-joinnow").addEventListener("click", signup);
   setupInputListners();
@@ -101,6 +106,7 @@ async function validate({
   clearToolTips();
   let pass = true;
   let idPrefix = "sign-up-";
+  console.log("ggggg;", validator);
   if (!validator.isEmail(email)) {
     pass = errorToolTipAct(idPrefix + "email");
   }
@@ -148,7 +154,8 @@ function clearToolTips(parent) {
   if (parent) {
     console.log("x", parent);
     parent.parentNode.style.borderColor = "rgb(190, 190, 190)";
-    parent.querySelector("img").style.display = "none";
+    if (parent.querySelector("img"))
+      parent.querySelector("img").style.display = "none";
     parent.parentNode.querySelectorAll(".error-tooltip").forEach((tip) => {
       tip.style.display = "none";
     });
@@ -180,6 +187,7 @@ async function signUpReq(userObj) {
     });
     console.log(await res.json());
     if (res.status === 200) {
+      document.getElementById("sign-up-div").style.display = "none";
       return true;
     }
   } catch (err) {

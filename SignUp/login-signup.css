@@ -9,15 +9,18 @@ body {
 #sign-up-div,
 #log-in-div {
   z-index: 10;
-  background-color: rgb(194, 194, 194);
+  background-color: rgba(194, 194, 194, 0.63);
   margin: 0;
   padding: 0;
-  /* position: absolute; */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   cursor: pointer;
+  display: none;
+  z-index: 15;
+  /* filter: blur(2px); */
 }
 #sign-up-popup,
 #log-in-popup {
@@ -209,19 +212,11 @@ select {
   border-radius: 5px;
   margin-right: 10px;
 }
-.checked {
-  font-weight: var(--font-weight-bold);
-}
-.checked {
-  padding: 1px;
-  border: none;
-  background-color: black;
-}
 .checkBox {
   width: 18px;
   height: 18px;
 }
-.checkBox > img {
+.checkBox img {
   width: 100%;
 }
 input:-webkit-autofill,

@@ -3,6 +3,9 @@
 * {
   font-family: "Inter", "Roboto", sans-serif;
 }
+/* footer {
+  bottom: 0;
+} */
 #product-page {
   width: 68%;
   margin: auto;
@@ -15,7 +18,7 @@
 }
 #product-main-section {
   width: 83%;
-  height: 500px;
+  padding-bottom: 50px;
 }
 #products-page-heading {
   height: 50px;

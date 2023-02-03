@@ -1,6 +1,5 @@
 export default class Navbar {
-  constructor() {
-  }
+  constructor() {}
   renderElement() {
     const markup = `
       <div>
@@ -259,6 +258,7 @@ export default class Navbar {
         }
         .navBar_bottom{
             display: flex;
+            z-index: 10;
         }
       }
     </style>

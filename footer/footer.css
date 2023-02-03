@@ -1,0 +1,229 @@
+footer * {
+  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+/* #foot{
+
+} */
+footer #upper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(204, 204, 204);
+  padding: 8px;
+}
+footer #mainfoot {
+  background-color: black;
+  color: white;
+}
+footer #uppermainfoot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 12px; */
+}
+footer .uppermainfoot-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  margin: 6px;
+  margin-right: 50px;
+}
+footer .uppermainfoot-div img {
+  width: 24px;
+  height: 24px;
+  margin: 6px;
+}
+/* .uppermainfoot-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} */
+footer .uppermainfoot-text > h5 {
+  font-size: 12px;
+  padding: 0px;
+}
+footer .uppermainfoot-text p {
+  font-size: 12px;
+}
+footer hr {
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  /* height: 0.1px; */
+}
+
+footer #middlemainfoot {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+footer .middlemainfoot-div {
+  display: flex;
+  flex-direction: column;
+  margin: 22px;
+}
+footer .middlemainfoot-div a,
+footer h5 {
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  padding: 6px;
+}
+footer .middlemainfoot-div img {
+  width: 24px;
+}
+footer .middlemainfoot-div div {
+  padding: 6px;
+}
+/* #webelong{
+    
+} */
+footer #footersearch {
+  margin-top: 200px;
+}
+footer #footersearch input {
+  padding: 12px;
+  padding-right: 100px;
+  border-radius: 8px;
+  border: 0px;
+}
+footer #footersearch button {
+  padding: 12px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 24px;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  margin: 12px;
+}
+
+footer #lowermainfoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer #lowermainfoot-left {
+  margin-left: 150px;
+  margin-top: 24px;
+  margin-bottom: 70px;
+}
+footer #lowermainfoot-right {
+  margin-right: 150px;
+  margin-top: 24px;
+  margin-bottom: 70px;
+}
+footer #lowermainfoot img {
+  width: 30px;
+  padding: 6px;
+}
+footer #lowermainfoot-left > a,
+footer p {
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  /* padding: 6px; */
+}
+footer #lower-lowerp {
+  margin-top: 6px;
+}
+footer #footer-checkimg {
+  padding: 0px;
+  width: 24px;
+  margin-bottom: -8px;
+  margin-left: -6px;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer .footer-downloadapphr {
+  display: none;
+}
+footer #footer-downloadapp {
+  display: none;
+}
+footer #region-lowerhr {
+  display: none;
+}
+footer .middlemainfoot-queryh {
+  display: none;
+}
+
+@media screen and (max-width: 980px) {
+  footer #uppermainfoot {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  footer .uppermainfoot-div {
+    /* margin: 6px; */
+    padding: 2px;
+  }
+  footer #middlemainfoot {
+    display: flex;
+    flex-direction: column;
+  }
+  footer #footersearch {
+    margin-top: 12px;
+    padding: 0px;
+  }
+  footer .middlemainfoot-div h5 {
+    padding: 0px;
+  }
+  footer #lowermainfoot {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  footer #lowermainfoot-left {
+    margin: 12px;
+    margin-top: 24px;
+    margin-bottom: 48px;
+  }
+  footer #lowermainfoot-right {
+    margin: 12px;
+    /* display: none; */
+    margin-top: -24px;
+    margin-left: 12px;
+  }
+  footer #footer-lowerhr {
+    display: none;
+  }
+  footer .footer-downloadapphr {
+    display: block;
+  }
+  footer #region-lowerhr {
+    display: block;
+  }
+  footer #footer-downloadapp {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: 12px;
+  }
+  footer #footer-downloadapp img {
+    width: 120px;
+  }
+  footer #aboutsephora {
+    display: none;
+  }
+  footer #mysephora {
+    display: none;
+  }
+  footer #help {
+    display: none;
+  }
+  footer .middlemainfoot-queryh {
+    display: block;
+  }
+  footer .middlemainfoot-queryh > h5 {
+    margin-left: 12px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+}

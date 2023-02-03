@@ -1,21 +1,20 @@
-// import validator from "validator";
-import { ApiEndpoints } from "/SignUp/Apis.js";
-window.onload = () => {
-  document.getElementById("log-in-joinnow").addEventListener("click", login);
-  setupInputListners();
-};
+// window.onload = () => {
+document.getElementById("log-in-joinnow").addEventListener("click", login);
+setupInputListners();
+// };
 document.querySelector(".checkBox").addEventListener("click", () => {
   document.querySelector(".checkBox").classList.toggle("checked");
 });
 document.getElementById("log-in-div").addEventListener("click", (event) => {
   console.log(event.target);
   if (event.target != document.getElementById("log-in-div")) return;
+  console.log("bro i have a gf");
   document.getElementById("log-in-div").style.display = "none";
 });
 document.getElementById("log-in-close-btn").addEventListener("click", () => {
   document.getElementById("log-in-div").style.display = "none";
 });
-class createUser {
+class createUserLogin {
   constructor(email, password) {
     this.email = email;
     this.pass = password;
@@ -24,14 +23,15 @@ class createUser {
 
 async function login() {
   console.log("login");
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
+  let email = document.getElementById("login-email").value;
+  let password = document.getElementById("login-password").value;
   validateEmail({ email, password });
 }
 async function validateEmail({ email: email, password: password }) {
   clearToolTips();
   let pass = true;
   let idPrefix = "log-in-";
+  console.log("valid;", validator);
   if (!validator.isEmail(email)) {
     pass = errorToolTipAct(idPrefix + "email");
   }
@@ -39,7 +39,7 @@ async function validateEmail({ email: email, password: password }) {
     pass = errorToolTipAct(idPrefix + "password");
   }
   if (pass) {
-    let user = new createUser(email, password);
+    let user = new createUserLogin(email, password);
     let userObj = JSON.stringify({ user: user });
     localStorage.setItem("login_details", userObj);
     let res = await logInReq(userObj);
@@ -90,6 +90,9 @@ async function logInReq(userObj) {
     });
     console.log(await res.json());
     if (res.status === 200) {
+      let data = await res.json();
+      localStorage.setItem("user_details", JSON.stringify(data));
+      document.getElementById("log-in-div").style.display = "none";
       return true;
     }
   } catch (err) {

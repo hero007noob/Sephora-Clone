@@ -324,10 +324,11 @@ let topTags = [
 ];
 let isPopUP = false;
 
-window.onload = () => {
-  loadFilters();
-};
+// window.onload = () => {
+loadFilters();
+// };
 function loadFilters() {
+  console.log("i wanna cry");
   let sidebarBottomFilter = document.getElementById("all-drop-down-filters");
   let popupBottomFilter = document.getElementById("filter-pop-up-menu");
   if (checkWidth()) sidebarBottomFilter = popupBottomFilter;
@@ -715,3 +716,31 @@ function checkWidth() {
   // console.log(window.innerWidth, window.innerWidth < 821);
   return +window.innerWidth < 900 || +screen.width < 900;
 }
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.getElementById("navBar_button_cartCount").innerHTML = cart.length;
+addEventListener("storage", (event) => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("navBar_button_cartCount").innerHTML = cart.length;
+});
+function displayModal(e) {
+  document.querySelector(".navBar_bottom_overlay").style.display = "block";
+  const temp = document.querySelectorAll(".bottom-navbar");
+  const elem = e.getElementsByClassName("bottom-navbar")[0];
+  temp.forEach((item) => {
+    if (item != elem) item.style.display = "none";
+  });
+  if (elem.style.display == "block") {
+    console.log("hansaaa");
+    elem.style.display = "none";
+  } else elem.style.display = "block";
+}
+// close modal
+document
+  .querySelector(".navBar_bottom_overlay")
+  .addEventListener("click", () => {
+    const temp = document.querySelectorAll(".bottom-navbar");
+    temp.forEach((item) => {
+      item.style.display = "none";
+    });
+    document.querySelector(".navBar_bottom_overlay").style.display = "none";
+  });
