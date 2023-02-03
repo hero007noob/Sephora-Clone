@@ -111,6 +111,10 @@
 }
 .product-img{
     margin: 12px;
+    width: 100px;
+}
+.cartproducts-card-productname{
+    width: 400px;
 }
 .cartproducts-card-details{
     margin-left: 12px;
