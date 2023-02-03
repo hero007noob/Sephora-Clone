@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKU</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,300&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+        .specific-product{
+            background-color: white;
+            width: 100vw;
+            height: fit-content;
+            padding: 10px;
+        }
+        .specific-product__breadcrum{
+            width: 100%;
+            background-color: white;
+            padding: 5px 0;
+        }
+        .specific-product__breadcrum__span{
+            font-size: 0.7rem;
+            color: rgb(144, 144, 144);
+            font-weight: 400;
+        }
+        .specific-product__product-details{
+            width: 100%;
+            display: flex;
+            background-color: white;
+            padding: 30px 0;
+            border-bottom: 1px solid #000;
+        }
+        @media only screen and (max-width: 650px){
+            .specific-product__product-details{
+                flex-direction: column;
+            }
+        }
+        .specific-product__product-details__showcase{
+            flex: 1;
+            display: flex;
+        }
+        .specific-product__product-details__showcase__thumbnails{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+        }
+        @media only screen and (max-width: 350px){
+            .specific-product__product-details__showcase__thumbnails{
+                display: none;
+            }
+        }
+        .specific-product__product-details__showcase__thumbnails__img{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid black;
+            padding: 2px;
+        }
+        .specific-product__product-details__showcase__hero{
+            flex: 6;
+        }
+        .specific-product__product-details__showcase__hero__img{
+            width: 100%;
+        }
+        .specific-product__product-details__description{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0 10px;
+        }
+        @media only screen and (max-width: 650px){
+            .specific-product__product-details__description{
+                padding-top: 10px;
+                gap: 15px;
+            }
+        }
+        .specific-product__product-details__description__info__title{
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .specific-product__product-details__description__info__heading{
+            font-weight: 300;
+        }
+        .specific-product__product-details__description__info__popularity{
+            /* TEMPORARY display: none */
+            display: none;
+        }
+        .specific-product__product-details__description__info__price{
+            font-size: 0.7rem;
+            font-weight: 300;
+        }
+        .specific-product__product-details__description__info__color{
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+        .specific-product__product-details__description__info__size{
+            font-size: 0.7rem;
+            font-weight: 300;
+        }
+        .specific-product__product-details__description__options{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .specific-product__product-details__description__options__title{
+            font-size: 0.7rem;
+            font-weight: 300;
+        }
+        .specific-product__product-details__description__options__images{
+            display: flex;
+            gap: 5px;
+        }
+        .specific-product__product-details__description__options__images__img{
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid black;
+            padding: 2px;
+        }
+        .specific-product__product-details__description__shipping{
+            background-color: white;
+            display: flex;
+            gap: 10px;
+        }
+        .specific-product__product-details__description__shipping__card{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .specific-product__product-details__description__shipping__card__img{
+            width: 24px;
+        }
+        .specific-product__product-details__description__shipping__card__title{
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .specific-product__product-details__description__shipping__card__subtitle{
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgb(101, 101, 101);
+        }
+        .specific-product__product-details__description__quote{
+            background-color: #f6f6f8;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .specific-product__product-details__description__quote__text{
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        .specific-product__product-details__description__cta{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .specific-product__product-details__description__cta__button--select-button{
+            display: flex;
+            background-color: rgb(226, 3, 15);
+            color: white;
+            padding: 10px 20px;
+            gap: 10px;
+            border-radius: 50px;
+        }
+        .specific-product__product-details__description__cta__button--select-button__select{
+            background-color: transparent;
+            border: none;
+            color: white;
+            border-right: 1px solid white;
+            padding-right: 10px;
+        }
+        .specific-product__product-details__description__cta__button--select-button__button{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .specific-product__product-details__description__cta__button--select-button__button__title{
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .specific-product__product-details__description__cta__button--select-button__button__subtitle{
+            font-size: 0.75rem;
+            font-weight: 300;
+        }
+        .specific-product__product-details__description__cta__button--icon-button{
+            width: 26px;
+            height: 26px;
+        }
+        .specific-product__highlights{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 30px 0;
+            border-bottom: 1px solid #000;
+        }
+        .specific-product__highlights__title{
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .specific-product__highlights__cards{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        @media only screen and (max-width: 650px){
+            .specific-product__highlights__cards{
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media only screen and (max-width: 370px){
+            .specific-product__highlights__cards{
+                grid-template-columns: 1fr;
+            }
+        }
+        .specific-product__highlights__cards__card{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .specific-product__highlights__cards__card__img{
+            width: 48px;
+            height: 48px;
+        }
+        .specific-product__highlights__cards__card__text{
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <section class="specific-product">
+        <div class="specific-product__breadcrum">
+            <span class="specific-product__breadcrum__span">Makeup&nbsp;&nbsp;&nbsp;></span>
+            <span class="specific-product__breadcrum__span">Face&nbsp;&nbsp;&nbsp;></span>
+            <span class="specific-product__breadcrum__span">Highlighter</span>
+        </div>
+        <div class="specific-product__product-details">
+            <div class="specific-product__product-details__showcase">
+                <div class="specific-product__product-details__showcase__thumbnails">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                    <img class="specific-product__product-details__showcase__thumbnails__img" src="https://www.sephora.com/productimages/product/p38855877-av-02-zoom.jpg?imwidth=96" alt="">
+                </div>
+                <div class="specific-product__product-details__showcase__hero">
+                    <img class="specific-product__product-details__showcase__hero__img" src="https://www.sephora.com/productimages/sku/s2362168-main-zoom.jpg?imwidth=315" alt="">
+                </div>
+            </div>
+            <div class="specific-product__product-details__description">
+                <div class="specific-product__product-details__description__info">
+                    <p class="specific-product__product-details__description__info__title">Rare Beauty by Selena Gomez</p>
+                    <p class="specific-product__product-details__description__info__heading">Positive Light Liquid Luminizer Highlight</p>
+                    <div class="specific-product__product-details__description__info__popularity">
+                        <div class="specific-product__product-details__description__info__popularity__rating"></div>
+                        <span class="specific-product__product-details__description__info__popularity__faq">Ask a question</span>
+                    </div>
+                    <p class="specific-product__product-details__description__info__price">or 4 Payments of ₹ 6.45 with LOGO</p>
+                    <p class="specific-product__product-details__description__info__color">Color: Outshine - true gold</p>
+                    <p class="specific-product__product-details__description__info__size">Size 0.5 oz/ 15 mL</p>
+                </div>
+                <div class="specific-product__product-details__description__options">
+                    <p class="specific-product__product-details__description__options__title">Radiant finish - Standard size</p>
+                    <div class="specific-product__product-details__description__options__images">
+                        <img class="specific-product__product-details__description__options__images__img" src="https://www.sephora.com/productimages/sku/s2362168+sw.jpg" alt="" srcset="">
+                        <img class="specific-product__product-details__description__options__images__img" src="https://www.sephora.com/productimages/sku/s2362168+sw.jpg" alt="" srcset="">
+                        <img class="specific-product__product-details__description__options__images__img" src="https://www.sephora.com/productimages/sku/s2362168+sw.jpg" alt="" srcset="">
+                        <img class="specific-product__product-details__description__options__images__img" src="https://www.sephora.com/productimages/sku/s2362168+sw.jpg" alt="" srcset="">
+                        <img class="specific-product__product-details__description__options__images__img" src="https://www.sephora.com/productimages/sku/s2362168+sw.jpg" alt="" srcset="">
+                        <img class="specific-product__product-details__description__options__images__img" src="https://www.sephora.com/productimages/sku/s2362168+sw.jpg" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="specific-product__product-details__description__shipping">
+                    <div class="specific-product__product-details__description__shipping__card">
+                        <img class="specific-product__product-details__description__shipping__card__img" src="./truck.svg" alt="" srcset="">
+                        <p class="specific-product__product-details__description__shipping__card__title">Get It Shipped</p>
+                        <p class="specific-product__product-details__description__shipping__card__subtitle">Save 5% on this item</p>
+                    </div>
+                    <div class="specific-product__product-details__description__shipping__card">
+                        <img class="specific-product__product-details__description__shipping__card__img" src="./truck.svg" alt="" srcset="">
+                        <p class="specific-product__product-details__description__shipping__card__title">Get It Shipped</p>
+                        <p class="specific-product__product-details__description__shipping__card__subtitle">Save 5% on this item</p>
+                    </div>
+                    <div class="specific-product__product-details__description__shipping__card">
+                        <img class="specific-product__product-details__description__shipping__card__img" src="./truck.svg" alt="" srcset="">
+                        <p class="specific-product__product-details__description__shipping__card__title">Get It Shipped</p>
+                        <p class="specific-product__product-details__description__shipping__card__subtitle">Save 5% on this item</p>
+                    </div>
+                </div>
+                <div class="specific-product__product-details__description__quote">
+                    <p class="specific-product__product-details__description__quote__text">Sign in or create an account to enjoy <b>FREE standard shipping</b></p>
+                    <p class="specific-product__product-details__description__quote__text">Shipping & Returns</p>
+                </div>
+                <div class="specific-product__product-details__description__cta">
+                    <div class="specific-product__product-details__description__cta__button--select-button">
+                        <select class="specific-product__product-details__description__cta__button--select-button__select" name="item-count" id="item-count">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <div class="specific-product__product-details__description__cta__button--select-button__button">
+                            <p class="specific-product__product-details__description__cta__button--select-button__button__title">Add to Basket</p>
+                            <p class="specific-product__product-details__description__cta__button--select-button__button__subtitle">for Standard Shipping</p>
+                        </div>
+                    </div>
+                    <div class="specific-product__product-details__description__cta__button--icon-button">
+                        <img src="./heart.svg" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="specific-product__highlights">
+            <p class="specific-product__highlights__title">Highlights</p>
+            <div class="specific-product__highlights__cards">
+                <div class="specific-product__highlights__cards__card">
+                    <img class="specific-product__highlights__cards__card__img" src="https://www.sephora.com/contentimages/highlights/light-coverage.svg" alt="" srcset="">
+                    <p class="specific-product__highlights__cards__card__text">Light Coverage</p>
+                </div>
+                <div class="specific-product__highlights__cards__card">
+                    <img class="specific-product__highlights__cards__card__img" src="https://www.sephora.com/contentimages/highlights/liquid-formula.svg" alt="" srcset="">
+                    <p class="specific-product__highlights__cards__card__text">Liquid Formula</p>
+                </div>
+                <div class="specific-product__highlights__cards__card">
+                    <img class="specific-product__highlights__cards__card__img" src="https://www.sephora.com/contentimages/highlights/shimmer-finish.svg" alt="" srcset="">
+                    <p class="specific-product__highlights__cards__card__text">Shimmer Finish</p>
+                </div>
+                <div class="specific-product__highlights__cards__card">
+                    <img class="specific-product__highlights__cards__card__img" src="https://www.sephora.com/contentimages/highlights/long-wearing.svg" alt="" srcset="">
+                    <p class="specific-product__highlights__cards__card__text">Long Wearing</p>
+                </div>
+                <div class="specific-product__highlights__cards__card">
+                    <img class="specific-product__highlights__cards__card__img" src="https://www.sephora.com/contentimages/highlights/formulated-without.svg" alt="" srcset="">
+                    <p class="specific-product__highlights__cards__card__text">Without Parabens</p>
+                </div>
+                <div class="specific-product__highlights__cards__card">
+                    <img class="specific-product__highlights__cards__card__img" src="https://www.sephora.com/contentimages/highlights/vegan.svg" alt="" srcset="">
+                    <p class="specific-product__highlights__cards__card__text">Vegan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script defer src="./index.js"></script>
+</html>
