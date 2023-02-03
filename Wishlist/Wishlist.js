@@ -82,9 +82,9 @@ let data = [
   },
 ];
 
-var wish = JSON.parse(localStorage.getItem("wishlist")) || [];
+var wish = JSON.parse(localStorage.getItem("wishlist")) || data;
 
-displayItems(data);
+displayItems(wish);
 var total = 0;
 
 function displayItems(arr) {
@@ -137,7 +137,7 @@ function displayItems(arr) {
     pricediv.className = "pricediv";
 
     var price = document.createElement("p");
-    price.innerText = elem.sale_price;
+    price.innerText = '$'+elem.list_price;
 
     pricediv.append(price);
 
@@ -146,6 +146,10 @@ function displayItems(arr) {
 
     var basketbutton = document.createElement("button");
     basketbutton.innerText = "Add to Basket";
+
+    basketbuttondiv.addEventListener("click", function () {
+      basket(elem, index);
+    });
 
     basketbuttondiv.append(basketbutton);
 
@@ -171,8 +175,17 @@ function displayItems(arr) {
   });
 }
 function remove(elem, index) {
-  data.splice(index, 1);
-  displayItems(data);
+  wish.splice(index, 1);
+  localStorage.setItem("wishlist", JSON.stringify(wish));
+  displayItems(wish); 
+}
+function basket(elem, index) {
+  let basketData = JSON.parse(localStorage.getItem('basket_data')) || [];
+  basketData.push(wish[index]);
+  localStorage.setItem("basket_data", JSON.stringify(basketData)); 
+  wish.splice(index, 1)
+  localStorage.setItem("wishlist", JSON.stringify(wish));
+  displayItems(wish); 
 }
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");

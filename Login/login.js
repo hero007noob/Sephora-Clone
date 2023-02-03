@@ -88,9 +88,10 @@ async function logInReq(userObj) {
       },
       body: userObj,
     });
-    console.log(await res.json());
+    let data = await res.json();
+     console.log("data", data.data);
     if (res.status === 200) {
-      let data = await res.json();
+      document.getElementById("nav-sign-in-name").textContent = data.data.name;
       localStorage.setItem("user_details", JSON.stringify(data));
       document.getElementById("log-in-div").style.display = "none";
       return true;

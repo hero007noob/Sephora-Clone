@@ -710,10 +710,10 @@ export default class Navbar {
 
     var script = document.createElement("script");
     script.innerHTML = `
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cart = JSON.parse(localStorage.getItem('basket_data')) || [];
           document.getElementById('navBar_button_cartCount').innerHTML = cart.length;
         addEventListener('storage', (event)=>{
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const cart = JSON.parse(localStorage.getItem('basket_data')) || [];
           document.getElementById('navBar_button_cartCount').innerHTML = cart.length;
       })
       function displayModal(e){

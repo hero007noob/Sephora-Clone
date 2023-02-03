@@ -338,6 +338,7 @@ function loadFilters() {
   loadTopTags(topTags);
   loadBottomTags(sidebarBottomFiltersData);
   loadAllProducts(currentData);
+  loadUser();
 }
 
 function loadSidebarTopFilters(data) {
@@ -356,6 +357,16 @@ function loadSidebarTopFilters(data) {
     // p.innerHTML = `${item} (<span>0</span>)`;
     sidebarTopFilter.appendChild(p);
   });
+}
+function loadUser(){
+  let user = JSON.parse(localStorage.getItem('user_details'));
+  console.log("User", user);
+  if (user) {
+    let name = "Sign In";
+    if(user.data) name =user.data.name
+    if(user.user) name =user.user.name
+    document.getElementById("nav-sign-in-name").textContent =  name;
+  }
 }
 function selectTopItem(event) {
   console.log("here");
@@ -450,19 +461,32 @@ function loadBottomTags(data) {
     parent.innerHTML += view;
   });
 }
+// 
 function loadAllProducts(data) {
   document.getElementById("all-products").innerHTML = null;
   data.forEach((product) => {
+    let wishlistIcon =  "./Assets/heart-outline.svg"; 
+    let wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlistData.forEach((wishlist) => {
+      if(wishlist._id == product._id){
+        wishlistIcon = "./Assets/heart.svg";
+      }
+    })
     let item = `
-    <div class="product-item">
-    <div class="product-love" data-parent = "${product._id}" onclick=toggleLove(event) >
-      <img src="./Assets/heart-outline.svg" alt="" />
+    <div class="product-item"  onclick=goToSpecificProduct(event)  >
+    <div class="product-love" data-parent = "${
+      product._id
+    }" onclick=toggleLove(event) >
+      <img src="${wishlistIcon}" alt="" />
     </div>
     <div class="product-img-div">
       <div class="product-img">
         <img
           src="${product.hero_img}"
           alt="" />
+      </div>
+      <div class="quick-look" data-parent = "${product._id}" onclick=quickLookAct(event)>
+      Quicklook</div>
       </div>
       <p class="brand-name">${product.brand_name}</p>
       <p class="display-name"
@@ -502,7 +526,7 @@ function loadAllProducts(data) {
         <p>Same-Day Delivery: 78539-0998</p>
       </div>
     </div>
-  </div>`;
+  `;
     document.getElementById("all-products").innerHTML += item;
   });
 }
@@ -525,6 +549,61 @@ function setUpSidebarBottomFilters(parent) {
   });
 }
 
+function addRatings(rating, reviews){
+  this.rating = rating;
+  this.reviews = reviews;
+  // const elem = this.createElementFromHTML(this.renderElement());
+  const elem = document.getElementById('the-quicklook-popup');
+  // console.log(elem);
+  let star = '<div>';
+    let count = rating;
+    for (let i = 0; i < 5; i++) {
+      let url = "https://www.sephora.com/img/ufe/icons/star-outline.svg";
+      if (i < count) {
+        url = "https://www.sephora.com/img/ufe/icons/star.svg";
+      }
+      let img = '<img src='+url+' alt="" />';
+      star += img;
+    }
+    star += '</div> '+reviews+' reviews';
+    elem.getElementsByClassName(
+      "quicklook__card__display__data__rating"
+    )[0].innerHTML = star;
+    this.markup = elem.innerHTML;
+    // return (elem.innerHTML);
+    document.getElementById('the-quicklook-popup').innerHTML=this.markup;
+}
+function goToSpecificProduct(event){ 
+  let classes = event.target.classList;
+  let id;
+  if(classes.contains('product-img-div')){
+    console.log("event.target: ", event.target); 
+    id = event.target.parentNode.querySelector('.product-love').dataset.parent;
+    console.log("id: ", id);
+  }
+  if(event.target.querySelector('.product-love')){ 
+    id = event.target.querySelector('.product-love').dataset.parent;
+    console.log('id',id);
+  }
+  let product = currentData.filter((e)=>e._id == id)[0];
+  if(product)
+  localStorage.setItem('specificProduct',JSON.stringify(product) );
+}
+// let quicklook  = document.getElementsByClassName('quicklook')[0];
+// quicklook.addEventListener('click',gg);
+function quickLookAct(event){
+  console.log(
+    "quicklook",
+   event.target.dataset.parent
+  );
+  addRatings(3,224);
+  let product = currentData.filter((e) => e._id == event.target.dataset.parent)[0];
+  localStorage.setItem('quickLook', JSON.stringify(product));
+  let quicklook  = document.getElementsByClassName('quicklook')[0];
+  quicklook.style.display = "flex"; 
+  quicklook.addEventListener('click',()=>{quicklook.style.display = "none";});
+  // console.log('dfdfd',);
+} 
 function collapseSection(element) {
   element.style.height = "0px";
   element.setAttribute("data-collapsed", "true");
@@ -542,10 +621,24 @@ function toggleLove(event) {
   } else {
     img.src = "./Assets/heart-outline.svg";
   }
-  console.log(
-    "toggleLove",
-    sampleData.filter((e) => e._id == event.target.dataset.parent)
-  );
+  let wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  let selectedItem = currentData.filter((e) => e._id == event.target.dataset.parent)[0];
+  let copy = false;
+  let index = 0;
+  wishlistData.forEach((element,i) => {
+    if( element._id == selectedItem._id
+      ){
+        copy = true;
+        index = i;
+      }
+  });;
+  if (copy) {
+    wishlistData.splice(index, 1);
+  } else {
+    wishlistData.push(selectedItem);
+  } 
+  localStorage.setItem('wishlist', JSON.stringify(wishlistData));
 }
 function checkAct(event) {
   let li = event.target;
@@ -716,10 +809,10 @@ function checkWidth() {
   // console.log(window.innerWidth, window.innerWidth < 821);
   return +window.innerWidth < 900 || +screen.width < 900;
 }
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cart = JSON.parse(localStorage.getItem("basket_data")) || [];
 document.getElementById("navBar_button_cartCount").innerHTML = cart.length;
 addEventListener("storage", (event) => {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cart = JSON.parse(localStorage.getItem("basket_data")) || [];
   document.getElementById("navBar_button_cartCount").innerHTML = cart.length;
 });
 function displayModal(e) {

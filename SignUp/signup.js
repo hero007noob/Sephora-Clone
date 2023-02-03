@@ -185,8 +185,12 @@ async function signUpReq(userObj) {
       },
       body: userObj,
     });
-    console.log(await res.json());
+    let data = await res.json();
+    console.log(data );
     if (res.status === 200) {
+      console.log("userObj: ", userObj);
+      if(data)
+      document.getElementById("nav-sign-in-name").textContent = data.name;
       document.getElementById("sign-up-div").style.display = "none";
       return true;
     }

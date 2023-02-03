@@ -246,9 +246,9 @@ let localstored_cartdata =  [
   ];
 
 
-localStorage.setItem("products_data",JSON.stringify(localstored_cartdata));
+// localStorage.setItem("basket_data",JSON.stringify(localstored_cartdata));
 
-let cartdata = JSON.parse(localStorage.getItem("products_data")) || [];
+let cartdata = JSON.parse(localStorage.getItem("basket_data")) || [];
 
 
 
@@ -334,7 +334,7 @@ function displayData(cartdata){
 // it is done
 function removeFromCartFunc(elem,index){
     let removedarr = cartdata.splice(index,1);
-    localStorage.setItem("products_data",JSON.stringify(cartdata));
+    localStorage.setItem("basket_data",JSON.stringify(cartdata));
     displayData(cartdata);
 }
 
@@ -343,6 +343,7 @@ function moveToLovesFunc(elem,index){
     let lovesLocalarr = JSON.parse(localStorage.getItem("wishlist")) || [];
     lovesLocalarr.push(elem);
     localStorage.setItem("wishlist",JSON.stringify(lovesLocalarr));
+    removeFromCartFunc(elem,index);
 }
 
 let cartTotal = 0;
