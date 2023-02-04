@@ -17,300 +17,288 @@
     <div id="the-quicklook-popup">
       <div>
         <style>
-        @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,300&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-  
-        .quicklook * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: "Roboto", sans-serif;
-        }
-  
-        .quicklook {
-          width: 100vw;
-          height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: fixed;
-          z-index: 16;
-          background-color: #0000003f;
-          display: none;
-          bottom: 0;
-        }
-  
-        .quicklook__overlay {
-          width: 100vw;
-          height: 100vh;
-          position: fixed;
-          top: 0;
-          left: 0;
-          z-index: -1;
-        }
-  
-        .quicklook__card {
-          width: 95%;
-          display: flex;
-          background-color: white;
-          padding: 30px;
-          border-radius: 8px;
-          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        }
-  
-        .quicklook__card__display {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-evenly;
-          align-items: center;
-        }
-  
-        .quicklook__card__display__img {
-          width: 300px;
-          height: 300px;
-        }
-  
-        .quicklook__card__display__data {
-          font-size: 0.7rem;
-          font-weight: 700;
-        }
-  
-        .quicklook__card__details {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: space-between;
-        }
-  
-        .quicklook__card__details__description {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-        }
-  
-        .quicklook__card__details__description__title {
-          font-size: 0.9rem;
-          font-weight: 500;
-        }
-  
-        .quicklook__card__details__description__heading {
-          font-weight: 400;
-          font-size: 1rem;
-        }
-  
-        .quicklook__card__details__description__subtitle {
-          font-weight: 300;
-          font-size: 0.8rem;
-          color: rgb(139, 139, 139);
-        }
-  
-        .quicklook__card__details__description__para {
-          font-weight: 400;
-          font-size: 0.9rem;
-          letter-spacing: 1px;
-        }
-  
-        .quicklook__card__details__alternatives {
-          display: flex;
-          flex-direction: column;
-        }
-  
-        .quicklook__card__details__alternatives__title {
-          font-weight: 400;
-          font-size: 0.9rem;
-          letter-spacing: 1px;
-        }
-  
-        .quicklook__card__details__alternatives__images {
-          display: flex;
-          gap: 5px;
-          flex-wrap: wrap;
-        }
-  
-        .quicklook__card__details__alternatives__images__image-cirular {
-          border-radius: 50%;
-          padding: 1px;
-          border: 2px solid white;
-        }
-  
-        .quicklook__card__details__alternatives__images__image-cirular:hover {
-          border: 2px solid black;
-        }
-  
-        .quicklook__card__details__cta {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-        }
-  
-        .quicklook__card__details__cta__title {
-          font-weight: 500;
-          font-size: 1.3rem;
-        }
-  
-        .quicklook__card__details__cta__buttons {
-          display: flex;
-          gap: 10px;
-          justify-content: flex-end;
-        }
-  
-        .quicklook__card__details__cta__buttons__button {
-          padding: 10px 25px;
-          border-radius: 50px;
-          border: 2px solid rgb(226, 3, 15);
-          background-color: rgb(226, 3, 15);
-          color: white;
-        }
-  
-        .--is-outline {
-          border: 2px solid black;
-          background-color: white;
-          color: black;
-        }
-  
-        .quicklook__card__display{
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-  
-        .quicklook__card__display__data{
-          display: flex;
-          gap: 10px;
-        }
-  
-        .quicklook__card__display__data img {
-          width: 14px;
-        }
-  
-        .quicklook__card__display__data__rating{
-          display: flex;
-          gap: 5px;
-          align-items: center;
-        }
-  
-        .quicklook__card__display__data__loves{
-          display: flex;
-          gap: 5px;
-          align-items: center;
-        }
-        @media only screen and (max-width: 800px){
-          .quicklook__overlay{
-              display: none;
+          @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,300&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+          .quicklook * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
           }
-          .quicklook__card{
+
+          .quicklook {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            z-index: 16;
+            background-color: #0000003f;
+            display: none;
+            bottom: 0;
+          }
+
+          .quicklook__overlay {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+          }
+
+          .quicklook__card {
+            /* width: 95%; */
+            display: flex;
+            background-color: white;
+            padding: 30px;
+            gap: 100px;
+            border-radius: 8px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          }
+
+          .quicklook__card__display {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+          }
+
+          .quicklook__card__display__img {
+            width: 300px;
+            height: 300px;
+          }
+
+          .quicklook__card__display__data {
+            font-size: 0.7rem;
+            font-weight: 700;
+          }
+
+          .quicklook__card__details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+          }
+
+          .quicklook__card__details__description {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+          }
+
+          .quicklook__card__details__description__title {
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+
+          .quicklook__card__details__description__heading {
+            font-weight: 400;
+            font-size: 1rem;
+          }
+
+          .quicklook__card__details__description__subtitle {
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: rgb(139, 139, 139);
+          }
+
+          .quicklook__card__details__description__para {
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+          }
+
+          .quicklook__card__details__alternatives {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .quicklook__card__details__alternatives__title {
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+          }
+
+          .quicklook__card__details__alternatives__images {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+          }
+
+          .quicklook__card__details__alternatives__images__image-cirular {
+            border-radius: 50%;
+            padding: 1px;
+            border: 2px solid white;
+          }
+
+          .quicklook__card__details__alternatives__images__image-cirular:hover {
+            border: 2px solid black;
+          }
+
+          .quicklook__card__details__cta {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .quicklook__card__details__cta__title {
+            font-weight: 500;
+            font-size: 1.3rem;
+          }
+
+          .quicklook__card__details__cta__buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+          }
+
+          .quicklook__card__details__cta__buttons__button {
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 2px solid rgb(226, 3, 15);
+            background-color: rgb(226, 3, 15);
+            color: white;
+          }
+
+          .--is-outline {
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+          }
+
+          .quicklook__card__display {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          .quicklook__card__display__data {
+            display: flex;
+            gap: 10px;
+          }
+
+          .quicklook__card__display__data img {
+            width: 14px;
+          }
+
+          .quicklook__card__display__data__rating {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+          }
+
+          .quicklook__card__display__data__loves {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+          }
+          @media only screen and (max-width: 800px) {
+            .quicklook__overlay {
+              display: none;
+            }
+            .quicklook__card {
               flex-direction: column;
               justify-content: flex-start;
+            }
           }
-        }
-      </style>
-      <section class="quicklook">
-        <div class="quicklook__overlay"></div>
-        <div class="quicklook__card">
-          <div class="quicklook__card__display">
-            <img
-              class="quicklook__card__display__img"
-              src="https://www.sephora.com/productimages/sku/s2518959-main-zoom.jpg?imwidth=600"
-              alt=""
-              srcset=""
-            />
-            <div class="quicklook__card__display__data">
-              <div class="quicklook__card__display__data__rating"></div>
-              <div class="quicklook__card__display__data__loves">
-                  <img src="https://freesvg.org/img/heart-15.png" alt=""> 161.5K loves
+        </style>
+        <section class="quicklook">
+          <div class="quicklook__overlay"></div>
+          <div class="quicklook__card">
+            <div class="quicklook__card__display">
+              <img
+                class="quicklook__card__display__img"
+                src="https://www.sephora.com/productimages/sku/s2518959-main-zoom.jpg?imwidth=600"
+                alt=""
+                srcset="" />
+              <div class="quicklook__card__display__data">
+                <div class="quicklook__card__display__data__rating"></div>
+                <div class="quicklook__card__display__data__loves">
+                  <img src="https://freesvg.org/img/heart-15.png" alt="" />
+                  161.5K loves
+                </div>
+              </div>
+            </div>
+            <div class="quicklook__card__details">
+              <div class="quicklook__card__details__description">
+                <p class="quicklook__card__details__description__title">
+                  Lorem ipsum dolor sit.
+                </p>
+                <p class="quicklook__card__details__description__heading">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique, velit?
+                </p>
+                <p class="quicklook__card__details__description__subtitle">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint,
+                  incidunt?
+                </p>
+                <p class="quicklook__card__details__description__para"> </p>
+              </div>
+              <div class="quicklook__card__details__alternatives">
+                <p class="quicklook__card__details__alternatives__title">
+                  Color: Mesmerize - rose bronze (Selena's go-to shade)
+                </p>
+                <div class="quicklook__card__details__alternatives__images">
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                  <img
+                    src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
+                    class="quicklook__card__details__alternatives__images__image-cirular" />
+                </div>
+              </div>
+              <div class="quicklook__card__details__cta">
+                <p class="quicklook__card__details__cta__title">₹ 3000</p>
+                <div class="quicklook__card__details__cta__buttons">
+                  <button
+                    class="quicklook__card__details__cta__buttons__button">
+                    Add to Basket
+                  </button>
+                  <button
+                    class="quicklook__card__details__cta__buttons__button --is-outline">
+                    Add to Loves
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <div class="quicklook__card__details">
-            <div class="quicklook__card__details__description">
-              <p class="quicklook__card__details__description__title">
-                Lorem ipsum dolor sit.
-              </p>
-              <p class="quicklook__card__details__description__heading">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, velit?
-              </p>
-              <p class="quicklook__card__details__description__subtitle">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, incidunt?
-              </p>
-              <p class="quicklook__card__details__description__para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, incidunt? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit magnam nisi ipsam quaerat blanditiis ab praesentium sapiente, dolor a necessitatibus.
-              </p>
-            </div>
-            <div class="quicklook__card__details__alternatives">
-              <p class="quicklook__card__details__alternatives__title">
-                Color: Mesmerize - rose bronze (Selena's go-to shade)
-              </p>
-              <div class="quicklook__card__details__alternatives__images">
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-                <img
-                  src="https://www.sephora.com/productimages/sku/s2541019+sw.jpg"
-                  class="quicklook__card__details__alternatives__images__image-cirular"
-                />
-              </div>
-            </div>
-            <div class="quicklook__card__details__cta">
-              <p class="quicklook__card__details__cta__title">₹ 3000</p>
-              <div class="quicklook__card__details__cta__buttons">
-                <button class="quicklook__card__details__cta__buttons__button">
-                  Add to Basket
-                </button>
-                <button
-                  class="quicklook__card__details__cta__buttons__button --is-outline"
-                >
-                  Add to Loves
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-        </div>
+        </section>
+      </div>
     </div>
     <div id="log-in-div">
       <div id="log-in-popup">
@@ -686,7 +674,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            overflow-x: scroll;
+            /* overflow-x: scroll; */
           }
           .navBar_categories_button {
             color: white;
@@ -695,6 +683,10 @@
             background-color: transparent;
             font-weight: 200;
             white-space: nowrap;
+          }
+          .navBar_descriptiveButton_dropdown_button a {
+            text-decoration: none;
+            color: black;
           }
           .navBar_bottom {
             background-color: white;
@@ -1016,7 +1008,7 @@
                     d="M14.674 17.125c-.054 0-.106.028-.16.028-.56.08-1.093-.108-1.546-.454a.637.637 0 0 0-.374-.134c-.213 0-.374.108-.507.24a.596.596 0 0 0-.48-.266.578.578 0 0 0-.373.134c-.454.346-.986.56-1.546.452-.054 0-.107-.026-.16-.026l-.027.054.533.373c.774.56 1.734.799 2.64.613h.026c.347-.08.694-.212 1.014-.4l.987-.586-.027-.028Zm4.774-4.693v-.026c-1.68-.027-2.134-1.2-2.16-1.253-.48.986-2.934 1.333-3.708.053l-.16.08c.134.266.268 1.573 2.188 2.693v-.027c-.56-.4-.667-.986-.641-1.573.64.854 1.68 1.414 2.053 1.414v-.028c-.693-.24-.96-.853-1.066-1.44.827.72 2.026.988 2.373.908v-.028c-.986-.133-1.226-.613-1.36-1.172.933.505 2.16.56 2.48.4Z"></path>
                 </g>
               </svg>
-              <div class="navBar_descriptiveButton_right"  >
+              <div class="navBar_descriptiveButton_right">
                 <p id="nav-sign-in-name">Sign In</p>
                 <p>for FREE Shipping 🚚</p>
               </div>
@@ -1098,10 +1090,13 @@
                       width="24px"
                       src="https://www.sephora.com/img/ufe/icons/account.svg"
                       alt="" />
-                    <div class="navBar_descriptiveButton_dropdown_button_right">
-                      <p>Account Settings</p>
-                      <p>Payment, contact info, addresses, password</p>
-                    </div>
+                    <a href="/profile/profile.html">
+                      <div
+                        class="navBar_descriptiveButton_dropdown_button_right">
+                        <p>Account Settings</p>
+                        <p>Payment, contact info, addresses, password</p>
+                      </div>
+                    </a>
                   </div>
                   <div class="navBar_descriptiveButton_dropdown_button">
                     <img
@@ -1119,20 +1114,20 @@
           </div>
           <div class="navBar_buttons">
             <a href="/Wishlist/Wishlist.html">
-            <div class="navBar_buttons_number">
-              <!-- <div id="navBar_button_cartCount">1</div> -->
-              <svg
-                width="24px"
-                viewBox="0 0 24 24"
-                data-at="love_icon_small"
-                aria-hidden="true"
-                class="css-psp8z9 e65zztl0"
-                data-comp="Icon StyledComponent ">
-                <path
-                  d="M22 3.1c2.7 2.2 2.6 7.2.1 9.7-2.2 2.8-7.4 8.1-9.3 9.6-.5.4-1.1.4-1.6 0-1.8-1.5-7-6.8-9.2-9.6-2.6-2.6-2.7-7.6 0-9.7C4.6.5 9.7.7 12 4.2 14.3.8 19.3.5 22 3.1zm-.7.8c-2.4-2.4-7.2-2-8.9 1.5-.1.3-.4.4-.7.2-.1 0-.2-.1-.2-.2-1.6-3.5-6.5-4-8.9-1.5C.4 5.6.5 10 2.7 12.2c2.2 2.7 7.3 8 9.1 9.4.1.1.2.1.3 0 1.8-1.4 6.9-6.7 9.1-9.5 2.3-2.1 2.4-6.5.1-8.2z"></path>
-              </svg>
-            </div>
-          </a>
+              <div class="navBar_buttons_number">
+                <!-- <div id="navBar_button_cartCount">1</div> -->
+                <svg
+                  width="24px"
+                  viewBox="0 0 24 24"
+                  data-at="love_icon_small"
+                  aria-hidden="true"
+                  class="css-psp8z9 e65zztl0"
+                  data-comp="Icon StyledComponent ">
+                  <path
+                    d="M22 3.1c2.7 2.2 2.6 7.2.1 9.7-2.2 2.8-7.4 8.1-9.3 9.6-.5.4-1.1.4-1.6 0-1.8-1.5-7-6.8-9.2-9.6-2.6-2.6-2.7-7.6 0-9.7C4.6.5 9.7.7 12 4.2 14.3.8 19.3.5 22 3.1zm-.7.8c-2.4-2.4-7.2-2-8.9 1.5-.1.3-.4.4-.7.2-.1 0-.2-.1-.2-.2-1.6-3.5-6.5-4-8.9-1.5C.4 5.6.5 10 2.7 12.2c2.2 2.7 7.3 8 9.1 9.4.1.1.2.1.3 0 1.8-1.4 6.9-6.7 9.1-9.5 2.3-2.1 2.4-6.5.1-8.2z"></path>
+                </svg>
+              </div>
+            </a>
             <div class="navBar_buttons_number">
               <!-- <div id="navBar_button_cartCount">2</div> -->
               <svg width="24" height="24" fill="none" class="css-13o7eu2">
@@ -1142,26 +1137,62 @@
               </svg>
             </div>
             <a href="/basket/basket.html">
-            <div class="navBar_buttons_number">
-              <div id="navBar_button_cartCount">0</div>
-              <svg width="24px" height="24px" class="css-9uy14h">
-                <path
-                  d="M23.498 10c.326 0 .566.28.487.57l-3.078 11.32c-.177.652-.816 1.11-1.55 1.11H4.643c-.733 0-1.371-.458-1.55-1.11L.015 10.57c-.079-.29.16-.57.487-.57h22.996zm-3.112 9.999H3.613l.453 1.668a.588.588 0 0 0 .576.414h14.716c.271 0 .509-.17.575-.414L20.386 20zm.815-3H2.797l.544 2h17.317l.543-2zm.816-3H1.981l.544 2h18.948l.544-2zm.839-3.08H1.144L1.71 13h20.579l.567-2.08zm-9.037-9.205l5.612 5.2a.5.5 0 1 1-.68.734l-5.612-5.2a1.674 1.674 0 0 0-2.278 0l-5.612 5.2a.5.5 0 1 1-.68-.734l5.612-5.2a2.674 2.674 0 0 1 3.638 0z"></path>
-              </svg>
-            </div>
-          </a>
+              <div class="navBar_buttons_number">
+                <div id="navBar_button_cartCount">0</div>
+                <svg width="24px" height="24px" class="css-9uy14h">
+                  <path
+                    d="M23.498 10c.326 0 .566.28.487.57l-3.078 11.32c-.177.652-.816 1.11-1.55 1.11H4.643c-.733 0-1.371-.458-1.55-1.11L.015 10.57c-.079-.29.16-.57.487-.57h22.996zm-3.112 9.999H3.613l.453 1.668a.588.588 0 0 0 .576.414h14.716c.271 0 .509-.17.575-.414L20.386 20zm.815-3H2.797l.544 2h17.317l.543-2zm.816-3H1.981l.544 2h18.948l.544-2zm.839-3.08H1.144L1.71 13h20.579l.567-2.08zm-9.037-9.205l5.612 5.2a.5.5 0 1 1-.68.734l-5.612-5.2a1.674 1.674 0 0 0-2.278 0l-5.612 5.2a.5.5 0 1 1-.68-.734l5.612-5.2a2.674 2.674 0 0 1 3.638 0z"></path>
+                </svg>
+              </div>
+            </a>
           </div>
         </section>
         <section class="navBar_categories">
-          <a href="#" class="navBar_categories_button">New</a>
-          <a href="#" class="navBar_categories_button">Brands</a>
-          <a href="#" class="navBar_categories_button">Makeup</a>
-          <a href="#" class="navBar_categories_button">Skincare</a>
-          <a href="#" class="navBar_categories_button">Hair</a>
-          <a href="#" class="navBar_categories_button">Fragrance</a>
-          <a href="#" class="navBar_categories_button">Tools & Brushes</a>
-          <a href="#" class="navBar_categories_button">Bath & Body</a>
-          <a href="#" class="navBar_categories_button">Mini Size</a>
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >New</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Brands</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Makeup</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Skincare</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Hair</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Fragrance</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Tools & Brushes</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Bath & Body</a
+          >
+          <a
+            href="/ProductsPage/productsPage.html"
+            class="navBar_categories_button"
+            >Mini Size</a
+          >
         </section>
         <section class="navBar_bottom_overlay"></section>
         <section class="navBar_bottom">
@@ -1290,10 +1321,12 @@
                     width="24px"
                     src="https://www.sephora.com/img/ufe/icons/account.svg"
                     alt="" />
-                  <div class="navBar_descriptiveButton_dropdown_button_right">
-                    <p>Account Settings</p>
-                    <p>Payment, contact info, addresses, password</p>
-                  </div>
+                  <a href="/profile/profile.js">
+                    <div class="navBar_descriptiveButton_dropdown_button_right">
+                      <p>Account Settings</p>
+                      <p>Payment, contact info, addresses, password</p>
+                    </div>
+                  </a>
                 </div>
                 <div class="navBar_descriptiveButton_dropdown_button">
                   <img
@@ -1520,6 +1553,19 @@
           </div>
         </section>
       </div>
+      <script>
+        loadUser();
+        function loadUser() {
+          let user = JSON.parse(localStorage.getItem("user_details"));
+          console.log("User", user);
+          if (user) {
+            let name = "Sign In";
+            if (user.data) name = user.data.name;
+            if (user.user) name = user.user.name;
+            document.getElementById("nav-sign-in-name").textContent = name;
+          }
+        }
+      </script>
     </section>
     <div id="products-page-heading">Makeup</div>
     <div id="product-page">

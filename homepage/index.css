@@ -13,7 +13,7 @@ body{
   transition: .7s;
 }
 
-section{
+#the-home-page section{
   display: flex;
   
 }
@@ -67,7 +67,7 @@ section{
   position:absolute;
 }
 
-a {
+#the-home-page a {
   display: inline-block;
   border-radius: 50%;
 }

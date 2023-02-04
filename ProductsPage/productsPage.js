@@ -358,14 +358,14 @@ function loadSidebarTopFilters(data) {
     sidebarTopFilter.appendChild(p);
   });
 }
-function loadUser(){
+function loadUser() {
   let user = JSON.parse(localStorage.getItem('user_details'));
   console.log("User", user);
   if (user) {
     let name = "Sign In";
-    if(user.data) name =user.data.name
-    if(user.user) name =user.user.name
-    document.getElementById("nav-sign-in-name").textContent =  name;
+    if (user.data) name = user.data.name
+    if (user.user) name = user.user.name
+    document.getElementById("nav-sign-in-name").textContent = name;
   }
 }
 function selectTopItem(event) {
@@ -416,12 +416,10 @@ function loadSidebarBottomFilters(data, sidebarBottomFilter) {
         }
         star += `</div>`;
       }
-      filter += `<li class="drop-down-filter-item" data-parent="${
-        item.title
-      }" id="bottom-${title.replaceAll(" ", "_")}" onclick="checkAct(event)">
-      ${
-        item.title == "Rating" || item.title == "Price Range" ? radio : check
-      }</div>
+      filter += `<li class="drop-down-filter-item" data-parent="${item.title
+        }" id="bottom-${title.replaceAll(" ", "_")}" onclick="checkAct(event)">
+      ${item.title == "Rating" || item.title == "Price Range" ? radio : check
+        }</div>
 ${item.title == "Rating" ? star : ""} <p>${title}</p> </li>`;
     });
     filter += `</ul>
@@ -465,18 +463,17 @@ function loadBottomTags(data) {
 function loadAllProducts(data) {
   document.getElementById("all-products").innerHTML = null;
   data.forEach((product) => {
-    let wishlistIcon =  "./Assets/heart-outline.svg"; 
+    let wishlistIcon = "./Assets/heart-outline.svg";
     let wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
     wishlistData.forEach((wishlist) => {
-      if(wishlist._id == product._id){
+      if (wishlist._id == product._id) {
         wishlistIcon = "./Assets/heart.svg";
       }
     })
     let item = `
     <div class="product-item"  onclick=goToSpecificProduct(event)  >
-    <div class="product-love" data-parent = "${
-      product._id
-    }" onclick=toggleLove(event) >
+    <div class="product-love" data-parent = "${product._id
+      }" onclick=toggleLove(event) >
       <img src="${wishlistIcon}" alt="" />
     </div>
     <div class="product-img-div">
@@ -513,14 +510,12 @@ function loadAllProducts(data) {
       </div>
       <div class="product-price-div">
         <p class="product-list-price">$ ${product.list_price}</p>
-        ${
-          product.sale_price
-            ? `<p class="product-sale-price">$ ${product.sale_price}</p>`
-            : ""
-        }
+        ${product.sale_price
+        ? `<p class="product-sale-price">$ ${product.sale_price}</p>`
+        : ""
+      }
       </div>
-      <div class="same-day-delivery" style="opacity: ${
-        product.same_day_eligible ? 1 : 0
+      <div class="same-day-delivery" style="opacity: ${product.same_day_eligible ? 1 : 0
       }">
         <img src="./Assets/lock.svg" alt="" />
         <p>Same-Day Delivery: 78539-0998</p>
@@ -549,61 +544,76 @@ function setUpSidebarBottomFilters(parent) {
   });
 }
 
-function addRatings(rating, reviews){
+function addRatings(rating, reviews) {
   this.rating = rating;
   this.reviews = reviews;
   // const elem = this.createElementFromHTML(this.renderElement());
   const elem = document.getElementById('the-quicklook-popup');
   // console.log(elem);
   let star = '<div>';
-    let count = rating;
-    for (let i = 0; i < 5; i++) {
-      let url = "https://www.sephora.com/img/ufe/icons/star-outline.svg";
-      if (i < count) {
-        url = "https://www.sephora.com/img/ufe/icons/star.svg";
-      }
-      let img = '<img src='+url+' alt="" />';
-      star += img;
+  let count = rating;
+  for (let i = 0; i < 5; i++) {
+    let url = "https://www.sephora.com/img/ufe/icons/star-outline.svg";
+    if (i < count) {
+      url = "https://www.sephora.com/img/ufe/icons/star.svg";
     }
-    star += '</div> '+reviews+' reviews';
-    elem.getElementsByClassName(
-      "quicklook__card__display__data__rating"
-    )[0].innerHTML = star;
-    this.markup = elem.innerHTML;
-    // return (elem.innerHTML);
-    document.getElementById('the-quicklook-popup').innerHTML=this.markup;
+    let img = '<img src=' + url + ' alt="" />';
+    star += img;
+  }
+  star += '</div> ' + reviews + ' reviews';
+  elem.getElementsByClassName(
+    "quicklook__card__display__data__rating"
+  )[0].innerHTML = star;
+  this.markup = elem.innerHTML;
+  // return (elem.innerHTML);
+  document.getElementById('the-quicklook-popup').innerHTML = this.markup;
+  setupQuickLookData();
 }
-function goToSpecificProduct(event){ 
+function setupQuickLookData() {
+
+  let data = JSON.parse(localStorage.getItem("quickLook"));
+  console.log('ddd', data);
+  if (data) {
+    document.getElementsByClassName("quicklook__card__details__description__title")[0].textContent = data.brand_name
+    document.getElementsByClassName("quicklook__card__details__description__heading")[0].textContent = data.display_name
+    document.getElementsByClassName("quicklook__card__display__img")[0].src = data.hero_img;
+    document.getElementsByClassName("quicklook__card__details__description__subtitle")[0].textContent = data.image_alt_text;
+    document.getElementsByClassName("quicklook__card__details__alternatives__title")[0].textContent = data.image_alt_text;
+  }
+}
+function goToSpecificProduct(event) {
+  if (event.target.classList.contains("quick-look")) return;
   let classes = event.target.classList;
   let id;
-  if(classes.contains('product-img-div')){
-    console.log("event.target: ", event.target); 
+  if (classes.contains('product-img-div')) {
+    console.log("event.target: ", event.target);
     id = event.target.parentNode.querySelector('.product-love').dataset.parent;
     console.log("id: ", id);
   }
-  if(event.target.querySelector('.product-love')){ 
+  if (event.target.querySelector('.product-love')) {
     id = event.target.querySelector('.product-love').dataset.parent;
-    console.log('id',id);
+    console.log('id', id);
   }
-  let product = currentData.filter((e)=>e._id == id)[0];
-  if(product)
-  localStorage.setItem('specificProduct',JSON.stringify(product) );
+  let product = currentData.filter((e) => e._id == id)[0];
+  if (product)
+    localStorage.setItem('specificProduct', JSON.stringify(product));
+  window.location.href = '/specific-product/specificProduct.html'
 }
 // let quicklook  = document.getElementsByClassName('quicklook')[0];
 // quicklook.addEventListener('click',gg);
-function quickLookAct(event){
+function quickLookAct(event) {
   console.log(
     "quicklook",
-   event.target.dataset.parent
+    event.target.dataset.parent
   );
-  addRatings(3,224);
   let product = currentData.filter((e) => e._id == event.target.dataset.parent)[0];
+  addRatings(product.rating, product.reviews);
   localStorage.setItem('quickLook', JSON.stringify(product));
-  let quicklook  = document.getElementsByClassName('quicklook')[0];
-  quicklook.style.display = "flex"; 
-  quicklook.addEventListener('click',()=>{quicklook.style.display = "none";});
+  let quicklook = document.getElementsByClassName('quicklook')[0];
+  quicklook.style.display = "flex";
+  quicklook.addEventListener('click', () => { quicklook.style.display = "none"; });
   // console.log('dfdfd',);
-} 
+}
 function collapseSection(element) {
   element.style.height = "0px";
   element.setAttribute("data-collapsed", "true");
@@ -626,18 +636,18 @@ function toggleLove(event) {
   let selectedItem = currentData.filter((e) => e._id == event.target.dataset.parent)[0];
   let copy = false;
   let index = 0;
-  wishlistData.forEach((element,i) => {
-    if( element._id == selectedItem._id
-      ){
-        copy = true;
-        index = i;
-      }
+  wishlistData.forEach((element, i) => {
+    if (element._id == selectedItem._id
+    ) {
+      copy = true;
+      index = i;
+    }
   });;
   if (copy) {
     wishlistData.splice(index, 1);
   } else {
     wishlistData.push(selectedItem);
-  } 
+  }
   localStorage.setItem('wishlist', JSON.stringify(wishlistData));
 }
 function checkAct(event) {

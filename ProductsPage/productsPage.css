@@ -371,7 +371,7 @@
     display: none;
   }
 }
-.product-item *:not(.product-img-div,.quick-look,.product-love){
+.product-item *:not(.product-img-div, .quick-look, .product-love) {
   pointer-events: none;
   /* visibility: hidden; */
 }
@@ -397,4 +397,20 @@
 }
 .quick-look:hover {
   opacity: 1;
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  /* background: rgba(136, 136, 136, 0.103); */
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
 }
