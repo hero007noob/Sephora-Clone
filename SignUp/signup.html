@@ -135,4 +135,25 @@
   </body>
   <script type="module" src="./signup.js"></script>
   <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("yMWj9cSbqujaXF0L7");
+    })();
+    var templateParams = {
+      user: "Ankit",
+      otp: "2224",
+      mail: "Ankit@gmail.com",
+    };
+    emailjs.send("service_6dsn8e9", "template_tehz57s", templateParams).then(
+      function (response) {
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function (error) {
+        console.log("FAILED...", error);
+      }
+    );
+  </script>
 </html>

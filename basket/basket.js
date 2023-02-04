@@ -354,6 +354,7 @@ function calculateTotalPrice(){
     console.log(cartTotal);
     document.querySelector(".cart-subtotal").innerText = `$ ${cartTotal}`;
    document.getElementById("cart-subtotal-h").innerText = `$ ${cartTotal}`;
+   localStorage.setItem("sephoraCartTotal",JSON.stringify(cartTotal));
 }
 
 // it is done
