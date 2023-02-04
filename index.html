@@ -1,14 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/homepage/index.css" />
-    <script defer src="/homepage/index.js"></script>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sephora</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,300&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+        .hero-slider{
+            display: flex;
+            background-color: white;
+            width: 100vw;
+            overflow: scroll;
+            padding: 5px 10px;
+            gap: 10px;
+        }
+        .hero-slider__card{
+            /* min-width: 500px; */
+            min-width: 30vw;
+            min-width: 400px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        .hero-slider__card__img{
+            width: 100%;
+        }
+        .hero-slider__card__details{
+            padding: 20px;
+            color: white;
+        }
+        .hero-slider__card__details__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .hero-slider__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        .hero-slider__card__details__cta{
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 10px 0;
+        }
+    </style>
+    <style>
+        .chosen-for-you{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 10px;
+            gap: 10px;
+            background-color: white;
+        }
+        .chosen-for-you__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .chosen-for-you__slider{
+            display: flex;
+            width: 100%;
+            overflow: scroll;
+            gap: 10px;
+        }
+        .chosen-for-you__slider__card{
+            min-width: 250px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            transition: all 0.3s;
+            position: relative; /* for tags*/
+        }
+        .chosen-for-you__slider__card:hover{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .chosen-for-you__slider__card__img{
+            width: 100%;
+        }
+        .chosen-for-you__slider__card__details{
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .chosen-for-you__slider__card__details__title{
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .chosen-for-you__slider__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .chosen-for-you__slider__card__details__offers{
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        .chosen-for-you__slider__card__buttons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .chosen-for-you__slider__card__buttons--border-button{
+            padding: 8px 40px;
+            border: 2px solid black;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: white;
+        }
+        .chosen-for-you__slider__card__buttons--text-button{
+            color: rgb(0, 149, 255);
+            font-weight: 300;
+        }
+        .chosen-for-you__slider__card__tags__box-tags{
+            background-color: transparent;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 5px;
+            top: 0;
+            left: 0;
+            gap: 2px;
+            color: white;
+        }
+        .chosen-for-you__slider__card__tags__box-tags__tag{
+            background-color: black;
+            padding: 2px 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .chosen-for-you__slider__card__tags__number-tags{
+            background-color: black;
+            color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            transform: rotate(-45deg);
+        }
+        .chosen-for-you__slider__card__tags__number-tags__tag{
+            transform: rotate(45deg);
+            margin-left: 12px;
+            font-size: 1.2rem;
+        }
+        /* FOR THIS FILE -- BEGIN */
+        .chosen-for-you__slider__card__tags{
+            display: none;
+        }
+        .chosen-for-you__slider__card__details__offers{
+            display: none;
+        }
+        .chosen-for-you__slider__card__buttons{
+            display: none;
+        }
+        /* FOR THIS FILE -- END */
+    </style>
+    <style>
+        .selling-fast{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 10px;
+            gap: 10px;
+            background-color: white;
+        }
+        .selling-fast__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .selling-fast__slider{
+            display: flex;
+            width: 100%;
+            overflow: scroll;
+            gap: 10px;
+        }
+        .selling-fast__slider__card{
+            min-width: 250px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            transition: all 0.3s;
+            position: relative; /* for tags*/
+        }
+        .selling-fast__slider__card:hover{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .selling-fast__slider__card__img{
+            width: 100%;
+        }
+        .selling-fast__slider__card__details{
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .selling-fast__slider__card__details__title{
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .selling-fast__slider__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .selling-fast__slider__card__details__offers{
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        .selling-fast__slider__card__buttons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .selling-fast__slider__card__buttons--border-button{
+            padding: 8px 40px;
+            border: 2px solid black;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: white;
+        }
+        .selling-fast__slider__card__buttons--text-button{
+            color: rgb(0, 149, 255);
+            font-weight: 300;
+        }
+        .selling-fast__slider__card__tags{
+
+        }
+        .selling-fast__slider__card__tags__box-tags{
+            background-color: transparent;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 5px;
+            top: 0;
+            left: 0;
+            gap: 2px;
+            color: white;
+        }
+        .selling-fast__slider__card__tags__box-tags__tag{
+            background-color: black;
+            padding: 2px 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .selling-fast__slider__card__tags__number-tags{
+            background-color: black;
+            color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            transform: rotate(-45deg);
+        }
+        .selling-fast__slider__card__tags__number-tags__tag{
+            transform: rotate(45deg);
+            margin-left: 12px;
+            font-size: 1.2rem;
+        }
+        /* FOR THIS FILE -- BEGIN */
+        .selling-fast__slider__card__details__offers{
+            display: none;
+        }
+        .selling-fast__slider__card__buttons{
+            display: none;
+        }
+        /* FOR THIS FILE -- END */
+    </style>
+    <style>
+        .just-dropped{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 10px;
+            gap: 10px;
+            background-color: white;
+        }
+        .just-dropped__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .just-dropped__slider{
+            display: flex;
+            width: 100%;
+            overflow: scroll;
+            gap: 10px;
+        }
+        .just-dropped__slider__card{
+            min-width: 250px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            transition: all 0.3s;
+            position: relative; /* for tags*/
+        }
+        .just-dropped__slider__card:hover{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .just-dropped__slider__card__img{
+            width: 100%;
+        }
+        .just-dropped__slider__card__details{
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .just-dropped__slider__card__details__title{
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .just-dropped__slider__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .just-dropped__slider__card__details__offers{
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        .just-dropped__slider__card__buttons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .just-dropped__slider__card__buttons--border-button{
+            padding: 8px 40px;
+            border: 2px solid black;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: white;
+        }
+        .just-dropped__slider__card__buttons--text-button{
+            color: rgb(0, 149, 255);
+            font-weight: 300;
+        }
+        .just-dropped__slider__card__tags{
+
+        }
+        .just-dropped__slider__card__tags__box-tags{
+            background-color: transparent;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 5px;
+            top: 0;
+            left: 0;
+            gap: 2px;
+            color: white;
+        }
+        .just-dropped__slider__card__tags__box-tags__tag{
+            background-color: black;
+            padding: 2px 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .just-dropped__slider__card__tags__number-tags{
+            background-color: black;
+            color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            transform: rotate(-45deg);
+        }
+        .just-dropped__slider__card__tags__number-tags__tag{
+            transform: rotate(45deg);
+            margin-left: 12px;
+            font-size: 1.2rem;
+        }
+        /* FOR THIS FILE -- BEGIN */
+        .just-dropped__slider__card__tags__number-tags{
+            display: none;
+        }
+        .just-dropped__slider__card__details__offers{
+            display: none;
+        }
+        .just-dropped__slider__card__buttons{
+            display: none;
+        }
+        /* FOR THIS FILE -- END */
+    </style>
+    <style>
+        .beauty-insider-rewards{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 10px;
+            gap: 10px;
+            background-color: white;
+        }
+        .beauty-insider-rewards__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .beauty-insider-rewards__slider{
+            display: flex;
+            width: 100%;
+            overflow: scroll;
+            gap: 10px;
+        }
+        .beauty-insider-rewards__slider__card{
+            min-width: 250px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            transition: all 0.3s;
+            position: relative; /* for tags*/
+        }
+        .beauty-insider-rewards__slider__card:hover{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .beauty-insider-rewards__slider__card__img{
+            width: 100%;
+        }
+        .beauty-insider-rewards__slider__card__details{
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .beauty-insider-rewards__slider__card__details__title{
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .beauty-insider-rewards__slider__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .beauty-insider-rewards__slider__card__details__offers{
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        .beauty-insider-rewards__slider__card__buttons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .beauty-insider-rewards__slider__card__buttons--border-button{
+            padding: 8px 40px;
+            border: 2px solid black;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: white;
+        }
+        .beauty-insider-rewards__slider__card__buttons--text-button{
+            color: rgb(0, 149, 255);
+            font-weight: 300;
+        }
+        .beauty-insider-rewards__slider__card__tags{
+
+        }
+        .beauty-insider-rewards__slider__card__tags__box-tags{
+            background-color: transparent;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 5px;
+            top: 0;
+            left: 0;
+            gap: 2px;
+            color: white;
+        }
+        .beauty-insider-rewards__slider__card__tags__box-tags__tag{
+            background-color: black;
+            padding: 2px 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .beauty-insider-rewards__slider__card__tags__number-tags{
+            background-color: black;
+            color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            transform: rotate(-45deg);
+        }
+        .beauty-insider-rewards__slider__card__tags__number-tags__tag{
+            transform: rotate(45deg);
+            margin-left: 12px;
+            font-size: 1.2rem;
+        }
+        /* FOR THIS FILE -- BEGIN */
+        .beauty-insider-rewards__slider__card__tags{
+            display: none;
+        }
+        .beauty-insider-rewards__slider__card__buttons--text-button{
+            display: none;
+        }
+        /* FOR THIS FILE -- END */
+    </style>
+    <style>
+        .beauty-offers{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 10px;
+            gap: 10px;
+            background-color: white;
+        }
+        .beauty-offers__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .beauty-offers__slider{
+            display: flex;
+            width: 100%;
+            overflow: scroll;
+            gap: 10px;
+        }
+        .beauty-offers__slider__card{
+            min-width: 250px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            transition: all 0.3s;
+            position: relative; /* for tags*/
+        }
+        .beauty-offers__slider__card:hover{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .beauty-offers__slider__card__img{
+            width: 100%;
+        }
+        .beauty-offers__slider__card__details{
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .beauty-offers__slider__card__details__title{
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .beauty-offers__slider__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .beauty-offers__slider__card__details__offers{
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        .beauty-offers__slider__card__buttons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .beauty-offers__slider__card__buttons--border-button{
+            padding: 8px 40px;
+            border: 2px solid black;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: white;
+        }
+        .beauty-offers__slider__card__buttons--text-button{
+            color: rgb(0, 149, 255);
+            font-weight: 300;
+        }
+        .beauty-offers__slider__card__tags__box-tags{
+            background-color: transparent;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 5px;
+            top: 0;
+            left: 0;
+            gap: 2px;
+            color: white;
+        }
+        .beauty-offers__slider__card__tags__box-tags__tag{
+            background-color: black;
+            padding: 2px 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .beauty-offers__slider__card__tags__number-tags{
+            background-color: black;
+            color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            transform: rotate(-45deg);
+        }
+        .beauty-offers__slider__card__tags__number-tags__tag{
+            transform: rotate(45deg);
+            margin-left: 12px;
+            font-size: 1.2rem;
+        }
+        /* FOR THIS FILE -- BEGIN */
+        .chosen-for-you__slider__card__tags{
+            display: none;
+        }
+        .beauty-offers__slider__card__buttons--text-button{
+            display: none;
+        }
+        /* FOR THIS FILE -- END */
+    </style>
+    <style>
+        .new-products{
+            display: flex;
+            background-color: white;
+            width: 100vw;
+            overflow: scroll;
+            padding: 5px 10px;
+            gap: 10px;
+        }
+        .new-products__card{
+            /* min-width: 500px; */
+            min-width: 30vw;
+            min-width: 500px;
+            display: flex;
+            flex-direction: column-reverse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        .new-products__card__img{
+            width: 100%;
+        }
+        .new-products__card__details{
+            padding: 20px;
+            color: black;
+        }
+        .new-products__card__details__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .new-products__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        .new-products__card__details__cta{
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 10px 0;
+        }
+    </style>
+    <style>
+        .mission-vision{
+            display: flex;
+            background-color: white;
+            width: 100vw;
+            overflow: scroll;
+            padding: 5px 10px;
+            gap: 10px;
+        }
+        .mission-vision__card{
+            /* min-width: 500px; */
+            min-width: 30vw;
+            min-width: 400px;
+            display: flex;
+            flex-direction: column-reverse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        .mission-vision__card__img{
+            width: 100%;
+        }
+        .mission-vision__card__details{
+            padding: 20px;
+            color: black;
+        }
+        .mission-vision__card__details__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .mission-vision__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        .mission-vision__card__details__cta{
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 10px 0;
+        }
+    </style>
+    <style>
+        .categories{
+            width: 100vw;
+            background-color: white;
+            padding: 10px;
+        }
+        .categories__title{
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .categories__subtitle{
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        .categories__slider{
+            width: 100%;
+            display: flex;
+            background-color: white;
+            overflow-y: scroll;
+            gap: 10px;
+            padding: 10px 0;
+        }
+        .categories__slider__card{
+            min-width: 120px;
+            height: 150px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 8px;
+        }
+        .categories__slider__card__title{
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+        .categories__slider__card__img{
+            width: 70px;
+            height: 70px;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -- BEGIN -->
     <section id="navbar__template"
       ><div>
         <style>
@@ -1108,846 +1903,1030 @@
         }
       </script>
     </section>
-    <div id="the-home-page">
-      <div onmouseover="displaybutton()" id="slider-box">
-        <div onclick="sliderleft()" id="left-button" class="slider-button">
-          <span class="left"></span>
-        </div>
+    <!-- NAVBAR -- END -->
 
-        <div onclick="sliderright()" id="right-button" class="slider-button">
-          <span class="right"></span>
-        </div>
-        <section id="secction">
-          <div id="slider1" class="slider">
-            <img
-              src=".\picture\2023-02-01-slotting-just-arrived-v2-standard-site-rwd-home-page-hero-banner-4-product-english-US-handoff_01 (1).avif"
-              alt="" />
-            <div class="detail-box">
-              <h2>The Latest Lineup</h2>
-              <p>New beauty from the hottest brands.</p>
-              <h3>Shop Now</h3>
+    <section style="margin: 20px 0;" class="hero-slider">
+        <div style="background-color: #351152;" class="hero-slider__card">
+            <img class="hero-slider__card__img" src="https://www.sephora.com/contentimages/2023-02-01-slotting-just-arrived-v2-standard-site-rwd-home-page-hero-banner-4-product-english-US-handoff_01.jpg?imwidth=1090" alt="">
+            <div class="hero-slider__card__details">
+                <p class="hero-slider__card__details__title">This Just in</p>
+                <p class="hero-slider__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="hero-slider__card__details__cta">SHOP NOW ></p>
             </div>
-          </div>
-          <div class="slider">
-            <img
-              src="./picture/2023-fragrance-q1-site-home-page-hero-banner-v-day-gifts-US-2835-release-1000x750-image-only.avif"
-              alt="" />
-            <div class="detail-box">
-              <h2>Valentine's Day Fragrance Gifts</h2>
-              <p>Treat them-or yourself.</p>
-              <h3>Shop Now</h3>
+        </div>
+        <div style="background-color: #D959CA;" class="hero-slider__card">
+            <img class="hero-slider__card__img" src="https://www.sephora.com/contentimages/2023-fragrance-q1-site-home-page-hero-banner-v-day-gifts-US-2835-release-1000x750-image-only.jpg?imwidth=1090" alt="">
+            <div class="hero-slider__card__details">
+                <p class="hero-slider__card__details__title">This Just in</p>
+                <p class="hero-slider__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="hero-slider__card__details__cta">SHOP NOW ></p>
             </div>
-          </div>
-          <div class="slider">
-            <img
-              src="./picture/2023-1-26-caudalie-premier-cru-rich-moisturizer-site-mweb-desktop-home-page-rwd-hero-banner-1000x750-en-us-can.avif"
-              alt="" />
-            <div class="detail-box">
-              <h2>New Caudalie Premier Cru Rich Moisturizer </h2>
-              <p
-                >Target wrinkles and support skin barrier health. only at
-                Sephora.</p
-              >
-              <h3>Shop Now</h3>
+        </div>
+        <div style="background-color: #351152;" class="hero-slider__card">
+            <img class="hero-slider__card__img" src="https://www.sephora.com/contentimages/2023-1-26-caudalie-premier-cru-rich-moisturizer-site-mweb-desktop-home-page-rwd-hero-banner-1000x750-en-us-can.jpg?imwidth=1090" alt="">
+            <div class="hero-slider__card__details">
+                <p class="hero-slider__card__details__title">This Just in</p>
+                <p class="hero-slider__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="hero-slider__card__details__cta">SHOP NOW ></p>
             </div>
-          </div>
-          <div class="slider">
-            <img
-              src="./picture/2023-01-15-slotting-value-size-jan-jumbo-standard-site-rwd-home-page-hero-banner-us-handoff_01-1280x1280.avif"
-              alt="" />
-            <div class="detail-box">
-              <h2>The Latest Lineup</h2>
-              <p>New beauty from the hottest brands.</p>
-              <h3>Shop Now</h3>
+        </div>
+        <div style="background-color: #D37D4A;" class="hero-slider__card">
+            <img class="hero-slider__card__img" src="https://www.sephora.com/contentimages/2023-01-11-slotting-bestsellers-v2-site-responsive-home-page-hero-banner-2022-xxXxx-slotting-bestsellers-v2-site-mobile-home-page-hero-banner-US_01.jpg?imwidth=1090" alt="">
+            <div class="hero-slider__card__details">
+                <p class="hero-slider__card__details__title">This Just in</p>
+                <p class="hero-slider__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="hero-slider__card__details__cta">SHOP NOW ></p>
             </div>
-          </div>
-          <div class="slider">
-            <img
-              src="https://www.sephora.com/contentimages/2023-02-01-slotting-just-arrived-v2-standard-site-rwd-home-page-hero-banner-4-product-english-US-handoff_01.jpg?imwidth=545"
-              alt="" />
-            <div class="detail-box">
-              <h2>The Latest Lineup</h2>
-              <p>New beauty from the hottest brands.</p>
-              <h3>Shop Now</h3>
+        </div>
+        <div style="background-color: #C3D7EF;" class="hero-slider__card">
+            <img class="hero-slider__card__img" src="https://www.sephora.com/contentimages/homepage/011023/Homepage/APP/2023-01-15-slotting-value-size-jan-jumbo-standard-site-rwd-home-page-hero-banner-us-handoff_01-1280x1280.jpeg?imwidth=1090" alt="">
+            <div class="hero-slider__card__details">
+                <p class="hero-slider__card__details__title">This Just in</p>
+                <p class="hero-slider__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="hero-slider__card__details__cta">SHOP NOW ></p>
             </div>
-          </div>
-          <div id="sliderl" class="slider">
-            <img
-              src="./picture/2023-01-11-slotting-bestsellers-v2-site-responsive-home-page-hero-banner-2022-xxXxx-slotting-bestsellers-v2-site-mobile-home-page-hero-banner-US_01.avif"
-              alt="" />
-            <div class="detail-box">
-              <h2>The Latest Lineup</h2>
-              <p>New beauty from the hottest brands.</p>
-              <h3>Shop Now</h3>
+        </div>
+        <div style="background-color: #006A53;" class="hero-slider__card">
+            <img class="hero-slider__card__img" src="https://www.sephora.com/contentimages/2023-01-05-jan-cleanical-story-site-desktop-home-page-rwd-hero-banner-us-can-release-V2.jpg?imwidth=1090" alt="">
+            <div class="hero-slider__card__details">
+                <p class="hero-slider__card__details__title">This Just in</p>
+                <p class="hero-slider__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="hero-slider__card__details__cta">SHOP NOW ></p>
             </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- Chosen For You -->
-      <div id="foryou">
-        <h2>Chosen For You</h2>
-        <div onclick="slider2left()" id="left-button2" class="slider-button2">
-          <span class="left2"></span>
         </div>
-
-        <div onclick="slider2right()" id="right-button2" class="slider-button2">
-          <span class="right2"></span>
+    </section>
+    <section style="margin: 20px 0;" class="chosen-for-you">
+        <p class="chosen-for-you__title">Chosen For You</p>
+        <div class="chosen-for-you__slider">
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2588432-main-zoom.jpg?pb=2020-03-sephora-value-2020&imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2654986-main-zoom.jpg?pb=2020-03-sephora-clean-2019&imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2555811-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2620235-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2638971-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2518959-main-zoom.jpg?pb=allure-2022-bestofbeauty-badge&imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2609394-main-zoom.jpg?pb=2020-03-sephora-clean-2019&imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chosen-for-you__slider__card">
+                <img class="chosen-for-you__slider__card__img" src="https://www.sephora.com/productimages/sku/s2639805-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="chosen-for-you__slider__card__details">
+                    <p class="chosen-for-you__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="chosen-for-you__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="chosen-for-you__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="chosen-for-you__slider__card__buttons">
+                    <button class="chosen-for-you__slider__card__buttons--border-button">Apply</button>
+                    <a class="chosen-for-you__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="chosen-for-you__slider__card__tags">
+                    <div class="chosen-for-you__slider__card__tags__box-tags">
+                        <p class="chosen-for-you__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="chosen-for-you__slider__card__tags__number-tags">
+                        <span class="chosen-for-you__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="slider2" class="foryou-slider">
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2461812-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>1Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2273969-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>2Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2629475-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>3Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2640753-main-zoom.jpg?pb=clean-planet-positive-badge-2021&imwidth=166"
-              alt="" />
-            <h3>4Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2596435-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>5Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2518959-main-zoom.jpg?pb=allure-2022-bestofbeauty-badge&imwidth=166"
-              alt="" />
-            <h3>6Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2366524-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>7Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-            src="https://www.sephora.com/productimages/sku/s2115954-main-zoom.jpg?imwidth=166
-            alt="">
-            <h3>8Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2366524-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>9Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-            src="https://www.sephora.com/productimages/sku/s2115954-main-zoom.jpg?imwidth=166
-            alt="">
-            <h3>10Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2366524-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>11Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div id="last-one">
-            <img
-            src="https://www.sephora.com/productimages/sku/s2115954-main-zoom.jpg?imwidth=166
-            alt="">
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
+    </section>
+    <section style="margin: 20px 0;" class="just-dropped">
+        <p class="just-dropped__title">Just Dropped</p>
+        <div class="just-dropped__slider">
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2641785-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2645588-main-zoom.jpg?pb=clean-planet-positive-badge-2021&imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2648020-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2647022-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2642296-main-zoom.jpg?pb=clean-planet-positive-badge-2021&imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2646990-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2633287-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="just-dropped__slider__card">
+                <img class="just-dropped__slider__card__img" src="https://www.sephora.com/productimages/sku/s2642395-main-zoom.jpg?pb=clean-planet-positive-badge-2021&imwidth=332" alt="" srcset="">
+                <div class="just-dropped__slider__card__details">
+                    <p class="just-dropped__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="just-dropped__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="just-dropped__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="just-dropped__slider__card__buttons">
+                    <button class="just-dropped__slider__card__buttons--border-button">Apply</button>
+                    <a class="just-dropped__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="just-dropped__slider__card__tags">
+                    <div class="just-dropped__slider__card__tags__box-tags">
+                        <p class="just-dropped__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="just-dropped__slider__card__tags__number-tags">
+                        <span class="just-dropped__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Just Dropped-->
-      <div id="foryou">
-        <h2>Just Dropped</h2>
-        <div onclick="slider3left()" id="left-button2" class="slider-button2">
-          <span class="left2"></span>
+    </section>
+    <section style="margin: 20px 0;" class="beauty-offers">
+        <p class="beauty-offers__title">Beauty Offers</p>
+        <div class="beauty-offers__slider">
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-3-vib-rouge-gifts-site-desktop-mobile-app-beauty-offers-page-banner-la-mer-en-us-can.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-XX-nutrafol-site-desktop-mobile-app-beauty-offers-page-banner-en-us.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/bpme/2023/February/2023-2-2-bi-sc-basket-multiplier-site-desktop-mobile-app-beauty-offer-banner-new-4x-sephora-collection-us-can.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/bpme/2023/February/2023-02-points-for-service-site-beauty-offers-banner-1000x750-us-can.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-spend-more-get-more-multiworld-app-site-desktop-mobile-beauty-offers-page-banner-us-final.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-1-26-caudalie-premier-cru-rich-moisturizer-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-1-27-fable-and-mane-mahamane-smooth-and-shine-hair-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-01-05-jan-cleanical-skincare-story-site-beauty-offers-banner-1000x750-choose-x-of-y-us-can-kohls-release.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/freeship2021/2022-08-01-free-ship-site-beauty-offers-page-banner-us-can-final.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-offers__slider__card">
+                <img class="beauty-offers__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-1-5-briogeo-destined-for-density-serum-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-offers__slider__card__details">
+                    <p class="beauty-offers__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-offers__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-offers__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-offers__slider__card__buttons">
+                    <button class="beauty-offers__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-offers__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-offers__slider__card__tags">
+                    <div class="beauty-offers__slider__card__tags__box-tags">
+                        <p class="beauty-offers__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-offers__slider__card__tags__number-tags">
+                        <span class="beauty-offers__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div onclick="slider3right()" id="right-button2" class="slider-button2">
-          <span class="right2"></span>
+    </section>
+    <section style="margin: 20px 0;" class="new-products">
+        <div style="background-color: #E5FBF8;" class="new-products__card">
+            <img class="new-products__card__img" src="https://www.sephora.com/contentimages/2023-2-10-nutrafol-site-desktop-mweb-home-page-rwd-marketing-banner-800x256-en-us.jpg?imwidth=800" alt="">
+            <div class="new-products__card__details">
+                <p class="new-products__card__details__title">This Just in</p>
+                <p class="new-products__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="new-products__card__details__cta">SHOP NOW ></p>
+            </div>
         </div>
-        <div id="slider3" class="foryou-slider">
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2461812-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2273969-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2629475-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2640753-main-zoom.jpg?pb=clean-planet-positive-badge-2021&imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2596435-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2518959-main-zoom.jpg?pb=allure-2022-bestofbeauty-badge&imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2366524-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-            src="https://www.sephora.com/productimages/sku/s2115954-main-zoom.jpg?imwidth=166
-            alt="">
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2366524-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-            src="https://www.sephora.com/productimages/sku/s2115954-main-zoom.jpg?imwidth=166
-            alt="">
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/productimages/sku/s2366524-main-zoom.jpg?imwidth=166"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-          </div>
-          <div>
-            <img
-            src="https://www.sephora.com/productimages/sku/s2115954-main-zoom.jpg?imwidth=166
-            alt="">
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Bum Bum Firmeza <br />
-              Firming & Debloating</p
-            >
-          </div>
+        <div style="background-color: #E5FBF8;" class="new-products__card">
+            <img class="new-products__card__img" src="https://www.sephora.com/contentimages/homepage/012423/Homepage/RWD/2023-1-1-sc-sku-site-desktop-mweb-home-page-rwd-marketing-banner-launch-2-800x256-en-us-1280x1280.jpeg?imwidth=800" alt="">
+            <div class="new-products__card__details">
+                <p class="new-products__card__details__title">This Just in</p>
+                <p class="new-products__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="new-products__card__details__cta">SHOP NOW ></p>
+            </div>
         </div>
-      </div>
-
-      <!--beuty offer-->
-      <div id="foryou-b">
-        <h2>Beauty Offers (11)</h2>
-        <div onclick="slider4left ()" id="left-button2b" class="slider-button2">
-          <span class="left2"></span>
+        <div style="background-color: #E5FBF8;" class="new-products__card">
+            <img class="new-products__card__img" src="https://www.sephora.com/contentimages/homepage/012423/Homepage/RWD/2023-1-12-maison-margiela-on-a-date-site-desktop-home-page-rwd-marketing-banner-800x256-en-us-can-1280x1280.jpeg?imwidth=800" alt="">
+            <div class="new-products__card__details">
+                <p class="new-products__card__details__title">This Just in</p>
+                <p class="new-products__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="new-products__card__details__cta">SHOP NOW ></p>
+            </div>
         </div>
-        <div
-          onclick="slider4right ()"
-          id="right-button2b"
-          class="slider-button2">
-          <span class="right2"></span>
+    </section>
+    <section style="margin: 20px 0;" class="selling-fast">
+        <p class="selling-fast__title">Selling Fast</p>
+        <div class="selling-fast__slider">
+            <div class="selling-fast__slider__card">
+                <img class="selling-fast__slider__card__img" src="https://www.sephora.com/productimages/sku/s2466191-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="selling-fast__slider__card__details">
+                    <p class="selling-fast__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="selling-fast__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="selling-fast__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="selling-fast__slider__card__buttons">
+                    <button class="selling-fast__slider__card__buttons--border-button">Apply</button>
+                    <a class="selling-fast__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="selling-fast__slider__card__tags">
+                    <div class="selling-fast__slider__card__tags__box-tags">
+                        <p class="selling-fast__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="selling-fast__slider__card__tags__number-tags">
+                        <span class="selling-fast__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="selling-fast__slider__card">
+                <img class="selling-fast__slider__card__img" src="https://www.sephora.com/productimages/sku/s70680-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="selling-fast__slider__card__details">
+                    <p class="selling-fast__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="selling-fast__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="selling-fast__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="selling-fast__slider__card__buttons">
+                    <button class="selling-fast__slider__card__buttons--border-button">Apply</button>
+                    <a class="selling-fast__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="selling-fast__slider__card__tags">
+                    <div class="selling-fast__slider__card__tags__box-tags">
+                        <p class="selling-fast__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="selling-fast__slider__card__tags__number-tags">
+                        <span class="selling-fast__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="selling-fast__slider__card">
+                <img class="selling-fast__slider__card__img" src="https://www.sephora.com/productimages/sku/s2619997-main-zoom.jpg?pb=2020-03-sephora-clean-2019&imwidth=332" alt="" srcset="">
+                <div class="selling-fast__slider__card__details">
+                    <p class="selling-fast__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="selling-fast__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="selling-fast__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="selling-fast__slider__card__buttons">
+                    <button class="selling-fast__slider__card__buttons--border-button">Apply</button>
+                    <a class="selling-fast__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="selling-fast__slider__card__tags">
+                    <div class="selling-fast__slider__card__tags__box-tags">
+                        <p class="selling-fast__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="selling-fast__slider__card__tags__number-tags">
+                        <span class="selling-fast__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="selling-fast__slider__card">
+                <img class="selling-fast__slider__card__img" src="https://www.sephora.com/productimages/sku/s2474138-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="selling-fast__slider__card__details">
+                    <p class="selling-fast__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="selling-fast__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="selling-fast__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="selling-fast__slider__card__buttons">
+                    <button class="selling-fast__slider__card__buttons--border-button">Apply</button>
+                    <a class="selling-fast__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="selling-fast__slider__card__tags">
+                    <div class="selling-fast__slider__card__tags__box-tags">
+                        <p class="selling-fast__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="selling-fast__slider__card__tags__number-tags">
+                        <span class="selling-fast__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="selling-fast__slider__card">
+                <img class="selling-fast__slider__card__img" src="https://www.sephora.com/productimages/sku/s2495539-main-zoom.jpg?pb=2020-03-sephora-clean-2019&imwidth=332" alt="" srcset="">
+                <div class="selling-fast__slider__card__details">
+                    <p class="selling-fast__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="selling-fast__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="selling-fast__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="selling-fast__slider__card__buttons">
+                    <button class="selling-fast__slider__card__buttons--border-button">Apply</button>
+                    <a class="selling-fast__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="selling-fast__slider__card__tags">
+                    <div class="selling-fast__slider__card__tags__box-tags">
+                        <p class="selling-fast__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="selling-fast__slider__card__tags__number-tags">
+                        <span class="selling-fast__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="selling-fast__slider__card">
+                <img class="selling-fast__slider__card__img" src="https://www.sephora.com/productimages/sku/s2224053-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="selling-fast__slider__card__details">
+                    <p class="selling-fast__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="selling-fast__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="selling-fast__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="selling-fast__slider__card__buttons">
+                    <button class="selling-fast__slider__card__buttons--border-button">Apply</button>
+                    <a class="selling-fast__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="selling-fast__slider__card__tags">
+                    <div class="selling-fast__slider__card__tags__box-tags">
+                        <p class="selling-fast__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="selling-fast__slider__card__tags__number-tags">
+                        <span class="selling-fast__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="foryou-slider-b" class="foryou-slider-b">
-          <div id="slider4">
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-3-vib-rouge-gifts-site-desktop-mobile-app-beauty-offers-page-banner-la-mer-en-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3>Free Nutrafol Trial Size</h3>
-            <p
-              >Ditch product buildup and excess <br />
-              oil with this gentle, scalp- <br />
-              soothing shampoo.
-            </p>
-            <p>
-              <br />
-              Free with $25 purchase.* <br />
-
-              Beauty Insider members only. <br />
-              <br />
-              Online only
-              <br />
-              *Exclusions/terms apply.
-            </p>
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-XX-nutrafol-site-desktop-mobile-app-beauty-offers-page-banner-en-us.jpg?imwidth=240"
-              alt="" />
-            <h3 style="font-size: 14px"
-              >Get 4X Points†† on Your Entire <br />
-              Purchase</h3
-            >
-            <p
-              >When you buy any Sephora <br />
-              Collection product.</p
-            >
-            <p>
-              <br />
-              Beauty Insider members only. <br />
-              <br />
-
-              In store & online • Ends 2/8/2023 ††Exclusions/terms apply. May be
-              <br />
-              combined with other promotional <br />
-              offers.</p
-            >
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/bpme/2023/February/2023-2-2-bi-sc-basket-multiplier-site-desktop-mobile-app-beauty-offer-banner-new-4x-sephora-collection-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3
-              >Free Cleanical Skincare Trial <br />
-              Sizes
-            </h3>
-            <p
-              >Choose two of four clean <br />
-              formulas with science-backed <br />
-              results.</p
-            >
-            <p
-              >Free with $25 purchase.* Beauty Insider members only. Online only
-              *Exclusions/terms apply.
-            </p>
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/bpme/2023/February/2023-02-points-for-service-site-beauty-offers-banner-1000x750-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3 style="font-size: 14px"
-              >Get 4X Points†† on Your Entire <br />
-              Purchase</h3
-            >
-            <p
-              >When you buy any Sephora <br />
-              Collection product.</p
-            >
-            <p>
-              <br />
-              Beauty Insider members only. <br />
-              <br />
-
-              In store & online • Ends 2/8/2023 ††Exclusions/terms apply. May be
-              <br />
-              combined with other promotional <br />
-              offers.</p
-            >
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-spend-more-get-more-multiworld-app-site-desktop-mobile-beauty-offers-page-banner-us-final.jpg?imwidth=240"
-              alt="" />
-            <h3
-              >Free Cleanical Skincare Trial <br />
-              Sizes
-            </h3>
-            <p
-              >Choose two of four clean <br />
-              formulas with science-backed <br />
-              results.</p
-            >
-            <p
-              >Free with $25 purchase.* Beauty Insider members only. Online only
-              *Exclusions/terms apply.
-            </p>
-            <button class="button-b"> Apply</button>
-          </div>
-          <div id="b6" id="slider4">
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-3-vib-rouge-gifts-site-desktop-mobile-app-beauty-offers-page-banner-la-mer-en-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3>Free Nutrafol Trial Size</h3>
-            <p
-              >Ditch product buildup and excess <br />
-              oil with this gentle, scalp- <br />
-              soothing shampoo.
-            </p>
-            <p>
-              <br />
-              Free with $25 purchase.* <br />
-
-              Beauty Insider members only. <br />
-              <br />
-              Online only
-              <br />
-              *Exclusions/terms apply.
-            </p>
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-XX-nutrafol-site-desktop-mobile-app-beauty-offers-page-banner-en-us.jpg?imwidth=240"
-              alt="" />
-            <h3 style="font-size: 14px"
-              >Get 4X Points†† on Your Entire <br />
-              Purchase</h3
-            >
-            <p
-              >When you buy any Sephora <br />
-              Collection product.</p
-            >
-            <p>
-              <br />
-              Beauty Insider members only. <br />
-              <br />
-
-              In store & online • Ends 2/8/2023 ††Exclusions/terms apply. May be
-              <br />
-              combined with other promotional <br />
-              offers.</p
-            >
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/bpme/2023/February/2023-2-2-bi-sc-basket-multiplier-site-desktop-mobile-app-beauty-offer-banner-new-4x-sephora-collection-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3
-              >Free Cleanical Skincare Trial <br />
-              Sizes
-            </h3>
-            <p
-              >Choose two of four clean <br />
-              formulas with science-backed <br />
-              results.</p
-            >
-            <p
-              >Free with $25 purchase.* Beauty Insider members only. Online only
-              *Exclusions/terms apply.
-            </p>
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/bpme/2023/February/2023-02-points-for-service-site-beauty-offers-banner-1000x750-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3 style="font-size: 14px"
-              >Get 4X Points†† on Your Entire <br />
-              Purchase</h3
-            >
-            <p
-              >When you buy any Sephora <br />
-              Collection product.</p
-            >
-            <p>
-              <br />
-              Beauty Insider members only. <br />
-              <br />
-
-              In store & online • Ends 2/8/2023 ††Exclusions/terms apply. May be
-              <br />
-              combined with other promotional <br />
-              offers.</p
-            >
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-spend-more-get-more-multiworld-app-site-desktop-mobile-beauty-offers-page-banner-us-final.jpg?imwidth=240"
-              alt="" />
-            <h3
-              >Free Cleanical Skincare Trial <br />
-              Sizes
-            </h3>
-            <p
-              >Choose two of four clean <br />
-              formulas with science-backed <br />
-              results.</p
-            >
-            <p
-              >Free with $25 purchase.* Beauty Insider members only. Online only
-              *Exclusions/terms apply.
-            </p>
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-1-5-briogeo-destined-for-density-serum-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3
-              >Free Cleanical Skincare Trial <br />
-              Sizes
-            </h3>
-            <p
-              >Choose two of four clean <br />
-              formulas with science-backed <br />
-              results.</p
-            >
-            <p
-              >Free with $25 purchase.* Beauty Insider members only. Online only
-              *Exclusions/terms apply.
-            </p>
-            <button class="button-b"> Apply</button>
-          </div>
-          <div>
-            <img
-              src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/January/2023-1-5-briogeo-destined-for-density-serum-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can.jpg?imwidth=240"
-              alt="" />
-            <h3>Sol de Janeiro</h3>
-            <p
-              >Brazilian Crush Cheirosa <br />
-              '40 Bom Dia Hair & Bod...</p
-            >
-            <button class="button-b"> Apply</button>
-          </div>
+    </section>
+    <section style="margin: 20px 0;" class="beauty-insider-rewards">
+        <p class="beauty-insider-rewards__title">Beauty Insider Rewards</p>
+        <div class="beauty-insider-rewards__slider">
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2638542-main-zoom.jpg?pb=clean-planet-positive-badge-2021&imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2593994-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2356442-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2413219-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2325678-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2650513-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2657161-main-zoom.jpg?imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/productimages/sku/s2650562-main-zoom.jpg?pb=clean-planet-positive-badge-2021&imwidth=332" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <hr class="hr1" />
-      <!--"advertise1-->
-      <div id="advertise1">
-        <div>
-          <div>
-            <h2>Introducing Nutrafol</h2>
-            <p
-              >The #1 dermatologist-recommended hair-growth- <br />
-              supplement brand* is now Sephora</p
-            >
-            <h3>SHOP NOW</h3>
-          </div>
-          <img
-            src="https://www.sephora.com/contentimages/2023-2-10-nutrafol-site-desktop-mweb-home-page-rwd-marketing-banner-800x256-en-us.jpg?imwidth=400"
-            alt="" />
+    </section>
+    <section style="margin: 20px 0;" class="categories">
+        <p class="categories__title">Featured Categories</p>
+        <p class="categories__subtitle">Shop what's popular now.</p>
+        <div class="categories__slider">
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/092022/Homepage/RWD/gifts%2032@3x.png?imwidth=106" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/luxury_beauty.svg" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/100422/Homepage/RWD/under25%2032@3x.jpg?imwidth=106" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_skincare_cleanser_moisturizer_us_ca_rwd_slice.jpg?imwidth=106" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/091322/Homepage/RWD/hair%20dryer.JPG?imwidth=106" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_fragrance_bottle_us_ca_rwd_slice.jpg?imwidth=106" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_sephoracollection_SC_us_ca_rwd_slice.jpg?imwidth=106" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_samples_32_us_ca_rwd_slice.png?imwidth=106" alt="">
+            </div>
         </div>
-        <div>
-          <div>
-            <h2>Introducing Nutrafol</h2>
-            <p
-              >The #1 dermatologist-recommended hair-growth- <br />
-              supplement brand* is now Sephora</p
-            >
-            <h3>SHOP NOW</h3>
-          </div>
-          <img
-            src="https://www.sephora.com/contentimages/homepage/012423/Homepage/RWD/2023-1-1-sc-sku-site-desktop-mweb-home-page-rwd-marketing-banner-launch-2-800x256-en-us-1280x1280.jpeg?imwidth=400"
-            alt="" />
+    </section>
+    <section style="margin: 20px 0;" class="mission-vision">
+        <div style="background-color: white;" class="mission-vision__card">
+            <img class="mission-vision__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/homepage-reassurance-banner-diversity-inclusion-desktop-mobile-us-ca-slice.jpeg?imwidth=800" alt="">
+            <div class="mission-vision__card__details">
+                <p class="mission-vision__card__details__title">This Just in</p>
+                <p class="mission-vision__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="mission-vision__card__details__cta">SHOP NOW ></p>
+            </div>
         </div>
-        <div>
-          <div>
-            <h2>Introducing Nutrafol</h2>
-            <p
-              >The #1 dermatologist-recommended hair-growth- <br />
-              supplement brand* is now Sephora</p
-            >
-            <h3>SHOP NOW</h3>
-          </div>
-          <img
-            src="https://www.sephora.com/contentimages/homepage/012423/Homepage/RWD/2023-1-12-maison-margiela-on-a-date-site-desktop-home-page-rwd-marketing-banner-800x256-en-us-can-1280x1280.jpeg?imwidth=400"
-            alt="" />
+        <div style="background-color: #BDDCEE;" class="mission-vision__card">
+            <img class="mission-vision__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/homepage-reassurance-banner-ease-convenience-desktop-mobile-us-ca-slice.jpeg?imwidth=800" alt="">
+            <div class="mission-vision__card__details">
+                <p class="mission-vision__card__details__title">This Just in</p>
+                <p class="mission-vision__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="mission-vision__card__details__cta">SHOP NOW ></p>
+            </div>
         </div>
-      </div>
-
-      <!--Featured Categories-->
-      <hr class="hr2" />
-      <div id="featured_c">
-        <div>
-          <h3>Featured Categories</h3>
-          <p>Shop what’s popular now.</p>
+        <div style="background-color: #C6A886;" class="mission-vision__card">
+            <img class="mission-vision__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/homepage-reassurance-banner-clean-planet-positive-desktop-mobile-us-ca-slice.jpeg?imwidth=800" alt="">
+            <div class="mission-vision__card__details">
+                <p class="mission-vision__card__details__title">This Just in</p>
+                <p class="mission-vision__card__details__subtitle">The latest beauty from the hottest brands.</p>
+                <p class="mission-vision__card__details__cta">SHOP NOW ></p>
+            </div>
         </div>
-        <div>
-          <div>
-            <p
-              >Gifts & Value <br />
-              Sets</p
-            >
-            <img
-              src="https://www.sephora.com/contentimages/homepage/092022/Homepage/RWD/gifts%2032@3x.png?imwidth=53"
-              alt="" />
-          </div>
-          <div>
-            <p
-              >Luxury <br />
-              Skincare</p
-            >
-            <img
-              src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/luxury_beauty.svg"
-              alt="" />
-          </div>
-          <div>
-            <p
-              >Makeu[ Under <br />
-              $25</p
-            >
-            <img
-              src="https://www.sephora.com/contentimages/homepage/100422/Homepage/RWD/under25%2032@3x.jpg?imwidth=53"
-              alt="" />
-          </div>
-          <div>
-            <p>Moisturizers</p>
-            <img
-              src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_skincare_cleanser_moisturizer_us_ca_rwd_slice.jpg?imwidth=53"
-              alt="" />
-          </div>
-          <div>
-            <p>Hair Stylling & Treatments</p>
-            <img
-              src="https://www.sephora.com/contentimages/homepage/091322/Homepage/RWD/hair%20dryer.JPG?imwidth=53"
-              alt="" />
-          </div>
-          <div>
-            <p>Perfume</p>
-            <img
-              src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_fragrance_bottle_us_ca_rwd_slice.jpg?imwidth=53"
-              alt="" />
-          </div>
-          <div>
-            <p>Sephora Collection</p>
-            <img
-              src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_sephoracollection_SC_us_ca_rwd_slice.jpg?imwidth=53"
-              alt="" />
-          </div>
-          <div>
-            <p>Jumbos</p>
-            <img
-              src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_samples_32_us_ca_rwd_slice.png?imwidth=53"
-              alt="" />
-          </div>
+    </section>
+    <section style="margin: 20px 0;" class="categories">
+        <p class="categories__title">Need Guidance?</p>
+        <p class="categories__subtitle">Check out our quizzes</p>
+        <div class="categories__slider">
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/clean_guide.svg" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/gift_finder.svg" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/foundation_guide.svg" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/skincare_age.svg" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_healthy%20scalp%20guide_us_ca_rwd_slice.png?imwidth=106" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/niche_fragrances.svg" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/skincare_quiz.svg" alt="">
+            </div>
+            <div class="categories__slider__card">
+                <p class="categories__slider__card__title">Gifts & Value Sets</p>
+                <img class="categories__slider__card__img" src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_BOB_us_rwd_slice.png?imwidth=106" alt="">
+            </div>
         </div>
-      </div>
-
-      <!--Need a Little Guidance?-->
-      <hr class="hr2" />
-
-      <div id="featured_c">
-        <div>
-          <h3 style="width: 220px">Need a Little Guidance?</h3>
-          <div class="guidance"
-            ><p>Check out our</p> <a href="">quizzes and buying guides.</a></div
-          >
-        </div>
-        <div style="margin-left: 18px" class="guidance-box">
-          <div>
-            <p>Clean Beauty</p>
-            <img
-              src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/clean_guide.svg"
-              alt="" />
-          </div>
-          <div>
-            <p>Gifting Quiz</p>
-            <img
-              src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/gift_finder.svg"
-              alt="" />
-          </div>
-          <div>
-            <p
-              >foundation <br />
-              Quix</p
-            >
-            <img
-              src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/foundation_guide.svg"
-              alt="" />
-          </div>
-          <div>
-            <p>
-              Skincare <br />
-              Routine <br />
-              Builder
-            </p>
-            <img
-              style="margin-top: -3px"
-              src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/skincare_age.svg"
-              alt="" />
-          </div>
-          <div>
-            <p
-              >Shiny Hair <br />
-              Guide</p
-            >
-            <img
-              src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_healthy%20scalp%20guide_us_ca_rwd_slice.png?imwidth=53"
-              alt="" />
-          </div>
-          <div>
-            <p>Fragrance Hub</p>
-            <img
-              src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/niche_fragrances.svg"
-              alt="" />
-          </div>
-          <div>
-            <p
-              >Cleanical <br />
-              Skincare</p
-            >
-            <img
-              src="https://www.sephora.com/contentimages/categorybanners/RWD/icons/skincare_quiz.svg"
-              alt="" />
-          </div>
-          <div>
-            <p
-              >Black-Owned <br />
-              Brands</p
-            >
-            <img
-              src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/CategoryTiles/homepage_featured_category_tile_BOB_us_rwd_slice.png?imwidth=53"
-              alt="" />
-          </div>
-        </div>
-      </div>
-
-      <!--advertsiment2-->
-      <hr class="hr3" />
-
-      <div id="advertise2">
-        <div>
-          <div style="font-size: 12px">
-            <h2
-              >Our Commitment to Diversity,Equity <br />
-              & Inclusion</h2
-            >
-
-            <h3>LEARN MORE</h3>
-          </div>
-          <img
-            src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/homepage-reassurance-banner-diversity-inclusion-desktop-mobile-us-ca-slice.jpeg?imwidth=400"
-            alt="" />
-        </div>
-        <div>
-          <div id="color" style="font-size: 12px">
-            <h2>Beauty on Demand</h2>
-            <p>Fast and easy options that work for you.</p>
-            <h3>LEARN MORE</h3>
-          </div>
-          <img
-            src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/homepage-reassurance-banner-ease-convenience-desktop-mobile-us-ca-slice.jpeg?imwidth=400"
-            alt="" />
-        </div>
-        <div>
-          <div style="font-size: 12px">
-            <h2>Clean + Planet Positive</h2>
-            <p>Brands on a mission to change your skin and the earth.</p>
-            <h3>LEARN MORE</h3>
-          </div>
-          <img
-            src="https://www.sephora.com/contentimages/homepage/060222/Homepage/RWD/homepage-reassurance-banner-clean-planet-positive-desktop-mobile-us-ca-slice.jpeg?imwidth=400"
-            alt="" />
-        </div>
-      </div>
-    </div>
-  </body>
-  <script src="/footer/footercomponent.js"></script>
-  <script>
-    // console.log("dfdfd", window.footer);
-    document.querySelector("footer").innerHTML = window.footer;
-  </script>
+    </section>
+</body>
 </html>
