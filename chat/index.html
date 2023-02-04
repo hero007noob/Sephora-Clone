@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,300&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+        .connect{
+            background-color: aqua;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+        .connect__accounts{
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid black;
+        }
+        @media only screen and (max-width: 650px){
+            .connect__accounts{
+                background-color: aqua;
+            }
+            .connect__accounts{
+                display: none;
+            }
+        }
+        .connect__accounts__account{
+            padding: 10px;
+            display: flex;
+            background-color: white;
+            gap: 10px;
+            border-bottom: 1px solid rgb(225, 225, 225);
+        }
+        .connect__accounts__account.disabled{
+            background-color: rgb(228, 228, 228);
+        }
+        .connect__accounts__account__img{
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+        }
+        .connect__accounts__account__details{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .connect__accounts__account__details__title{
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .connect__accounts__account__details__subtitle{
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: rgb(117, 117, 117);
+        }
+        .connect__chat{
+            border: 1px solid solid;
+            flex: 9;
+            display: flex;
+            flex-direction: column;
+            background: #0F2027;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .connect__chat__account{
+            width: 100%;
+            background-color: rgba(100, 100, 100, 0.5);
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            color: white;
+        }
+        .connect__chat__account__img{
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+        }
+        .connect__chat__account__details{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .connect__chat__account__details__title{
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .connect__chat__account__details__subtitle{
+            font-weight: 400;
+            font-size: 0.6rem;
+        }
+        .connect__chat__messages{
+            flex-grow: 1;
+            overflow-y: scroll;
+        }
+        .connect__chat__messages__message{
+            background-color: rgba(255, 255, 255, 0.3);
+            width: fit-content;
+            padding: 10px;
+            margin: 10px;
+            color: white;
+            font-weight: 300;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+        .connect__chat__messages__message.message-received{
+            margin-right: auto;
+            border-radius: 0px 8px 8px 8px;
+        }
+        .connect__chat__messages__message.message-sent{
+            margin-left: auto;
+            border-radius: 8px 8px 0px 8px;
+        }
+        .connect__chat__form{
+            display: flex;
+            background-color: white;
+            justify-content: space-between;
+        }
+        .connect__chat__form__input{
+            width: 90%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background-color: antiquewhite;
+        }
+        .connect__chat__form__send{
+            width: 42px;
+            padding: 5px;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="connect">
+        <div class="connect__accounts">
+            <div class="connect__accounts__account">
+                <img class="connect__accounts__account__img" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="" srcset="">
+                <div class="connect__accounts__account__details">
+                    <p class="connect__accounts__account__details__title">General</p>
+                    <p class="connect__accounts__account__details__subtitle">general discussions</p>
+                </div>
+            </div>
+            <div class="connect__accounts__account disabled">
+                <img class="connect__accounts__account__img" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="" srcset="">
+                <div class="connect__accounts__account__details">
+                    <p class="connect__accounts__account__details__title">New Releases</p>
+                    <p class="connect__accounts__account__details__subtitle">all new products are here!!</p>
+                </div>
+            </div>
+            <div class="connect__accounts__account disabled">
+                <img class="connect__accounts__account__img" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="" srcset="">
+                <div class="connect__accounts__account__details">
+                    <p class="connect__accounts__account__details__title">Upcoming</p>
+                    <p class="connect__accounts__account__details__subtitle">are we working on something new??😅</p>
+                </div>
+            </div>
+        </div>
+        <div class="connect__chat">
+            <div class="connect__chat__account">
+                <img class="connect__chat__account__img" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="" srcset="">
+                <div class="connect__chat__account__details">
+                    <p class="connect__chat__account__details__title">New Releases</p>
+                    <p class="connect__chat__account__details__subtitle">all new products are here!!</p>
+                </div>
+            </div>
+            <div class="connect__chat__messages">
+            </div>
+            <div class="connect__chat__form">
+                <input id="connect__chat__form__input" class="connect__chat__form__input" type="text" placeholder="Type in your message here">
+                <button onclick="sendMessage()" class="connect__chat__form__send">
+                    <img class="connect__chat__form__send__icon" src="./send.svg" alt="" srcset="">
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script>
+    var socket = io('https://beta-sephora-express-cr5j5yn2ca-uc.a.run.app')
+</script>
+<script>
+    function sendMessage(){
+        const msg = document.getElementById('connect__chat__form__input');
+        console.log("Sending message: ", msg);
+        socket.emit('chat message', msg.value);
+        const msgDiv = document.getElementsByClassName('connect__chat__messages')[0];
+        const bubble = `<div class="connect__chat__messages__message message-sent">${msg.value}</div>`;
+        msgDiv.innerHTML += bubble;
+        msg.value = '';
+    }
+    // receiving message
+    socket.on('chat message', (msg)=>{
+        console.log(msg);
+        const msgDiv = document.getElementsByClassName('connect__chat__messages')[0];
+        const bubble = `<div class="connect__chat__messages__message message-received">${msg}</div>`;
+        msgDiv.innerHTML += bubble;
+    });
+    // receiving messages history
+    socket.on('messages history', messages => {
+        console.log(messages);
+        const msgDiv = document.getElementsByClassName('connect__chat__messages')[0];
+        messages.forEach(msg=>{
+            const bubble = `<div class="connect__chat__messages__message message-received">${msg}</div>`;
+            msgDiv.innerHTML += bubble;
+        })
+    })
+</script>
+</html>
