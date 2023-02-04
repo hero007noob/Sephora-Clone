@@ -583,6 +583,7 @@ function setupQuickLookData() {
 }
 function goToSpecificProduct(event) {
   if (event.target.classList.contains("quick-look")) return;
+  if (event.target.classList.contains("product-love")) return;
   let classes = event.target.classList;
   let id;
   if (classes.contains('product-img-div')) {

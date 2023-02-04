@@ -18,3 +18,8 @@ if (data) {
     document.getElementsByClassName("specific-product__product-details__description__info__popularity__rating")[0].innerHTML += star;
     document.getElementsByClassName("specific-product__product-details__description__info__price")[0].textContent = data.list_price;
 }
+document.getElementsByClassName('specific-product__product-details__description__cta__button--select-button')[0].addEventListener('click', function () {
+    const cart = JSON.parse(localStorage.getItem("basket_data")) || [];
+    cart.push(data);
+    localStorage.setItem("basket_data", JSON.stringify(cart));
+})
