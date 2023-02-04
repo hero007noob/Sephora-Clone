@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Insider Rewards</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .beauty-insider-rewards{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 10px;
+            gap: 10px;
+            background-color: white;
+        }
+        .beauty-insider-rewards__title{
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .beauty-insider-rewards__slider{
+            display: flex;
+            width: 100%;
+            overflow: scroll;
+            gap: 10px;
+        }
+        .beauty-insider-rewards__slider__card{
+            min-width: 250px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            transition: all 0.3s;
+            position: relative; /* for tags*/
+        }
+        .beauty-insider-rewards__slider__card:hover{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .beauty-insider-rewards__slider__card__img{
+            width: 100%;
+        }
+        .beauty-insider-rewards__slider__card__details{
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .beauty-insider-rewards__slider__card__details__title{
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .beauty-insider-rewards__slider__card__details__subtitle{
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .beauty-insider-rewards__slider__card__details__offers{
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        .beauty-insider-rewards__slider__card__buttons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .beauty-insider-rewards__slider__card__buttons--border-button{
+            padding: 8px 40px;
+            border: 2px solid black;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: white;
+        }
+        .beauty-insider-rewards__slider__card__buttons--text-button{
+            color: rgb(0, 149, 255);
+            font-weight: 300;
+        }
+        .beauty-insider-rewards__slider__card__tags{
+
+        }
+        .beauty-insider-rewards__slider__card__tags__box-tags{
+            background-color: transparent;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 5px;
+            top: 0;
+            left: 0;
+            gap: 2px;
+            color: white;
+        }
+        .beauty-insider-rewards__slider__card__tags__box-tags__tag{
+            background-color: black;
+            padding: 2px 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .beauty-insider-rewards__slider__card__tags__number-tags{
+            background-color: black;
+            color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            transform: rotate(-45deg);
+        }
+        .beauty-insider-rewards__slider__card__tags__number-tags__tag{
+            transform: rotate(45deg);
+            margin-left: 12px;
+            font-size: 1.2rem;
+        }
+        /* FOR THIS FILE -- BEGIN */
+        .beauty-insider-rewards__slider__card__tags{
+            display: none;
+        }
+        .beauty-insider-rewards__slider__card__buttons--text-button{
+            display: none;
+        }
+        /* FOR THIS FILE -- END */
+    </style>
+</head>
+<body>
+    <section class="beauty-insider-rewards">
+        <p class="beauty-insider-rewards__title">Beauty Insider Rewards</p>
+        <div class="beauty-insider-rewards__slider">
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="beauty-insider-rewards__slider__card">
+                <img class="beauty-insider-rewards__slider__card__img" src="https://www.sephora.com/contentimages/promo/beautyoffers/2023/February/2023-2-2-sol-de-janeiro-bum-bum-firmeza-body-oil-site-desktop-mobile-app-beauty-offers-page-banner-en-us-can-revised.jpg?imwidth=480" alt="" srcset="">
+                <div class="beauty-insider-rewards__slider__card__details">
+                    <p class="beauty-insider-rewards__slider__card__details__title">Get a Sol de Janeiro Bum Bum Trial Size</p>
+                    <p class="beauty-insider-rewards__slider__card__details__subtitle">Try the bestselling body cream for visibly tighter and moisturized skin.</p>
+                    <p class="beauty-insider-rewards__slider__card__details__offers">Free with $25 purchase.*</br>Beauty Insider members only.</br>Online only</p>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__buttons">
+                    <button class="beauty-insider-rewards__slider__card__buttons--border-button">Apply</button>
+                    <a class="beauty-insider-rewards__slider__card__buttons--text-button">See Details</a>
+                </div>
+                <div class="beauty-insider-rewards__slider__card__tags">
+                    <div class="beauty-insider-rewards__slider__card__tags__box-tags">
+                        <p class="beauty-insider-rewards__slider__card__tags__box-tags__tag">New</p>
+                    </div>
+                    <div class="beauty-insider-rewards__slider__card__tags__number-tags">
+                        <span class="beauty-insider-rewards__slider__card__tags__number-tags__tag">#3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
